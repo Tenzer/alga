@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "alga"
-version = "0.0.0"
+version = "0.1.0"
 description = "CLI for remote controlling LG webOS TVs"
 authors = ["Jeppe Fihl-Pearson <jeppe@tenzer.dk>"]
 license = "MIT"

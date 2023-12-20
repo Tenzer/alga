@@ -1,18 +1,21 @@
-import typer
+from typing import Annotated
+
+from rich import print
 from rich.console import Console
 from rich.table import Table
+from typer import Argument, Typer
 
 from alga import client
 
 
-app = typer.Typer(no_args_is_help=True)
+app = Typer(no_args_is_help=True)
 
 
 @app.command()
 def current() -> None:
     response = client.request("ssap://tv/getCurrentChannel")
-    typer.echo(
-        f"The current channel is {response['channelName']} ({response['channelNumber']})"
+    print(
+        f"The current channel is [bold]{response['channelName']}[/bold] ([italic]{response['channelNumber']}[/italic])"
     )
 
 
@@ -27,7 +30,7 @@ def down() -> None:
 
 
 @app.command()
-def set(value: int) -> None:
+def set(value: Annotated[int, Argument()]) -> None:
     client.request("ssap://tv/openChannel", {"channelNumber": value})
 
 

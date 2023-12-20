@@ -1,9 +1,9 @@
-import typer
+from typer import Typer
 
 from alga import client
 
 
-app = typer.Typer(no_args_is_help=True)
+app = Typer(no_args_is_help=True)
 
 
 @app.command()

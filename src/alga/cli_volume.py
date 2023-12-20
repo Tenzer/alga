@@ -1,9 +1,12 @@
-import typer
+from typing import Annotated
+
+from rich import print
+from typer import Argument, Typer
 
 from alga import client
 
 
-app = typer.Typer(no_args_is_help=True)
+app = Typer(no_args_is_help=True)
 
 
 @app.command()
@@ -17,15 +20,15 @@ def down() -> None:
 
 
 @app.command()
-def set(value: int) -> None:
+def set(value: Annotated[int, Argument()]) -> None:
     client.request("ssap://audio/setVolume", {"volume": value})
 
 
 @app.command()
 def get() -> None:
     response = client.request("ssap://audio/getVolume")
-    typer.echo(
-        f"Volume is currently set to {response['volume']} and is currently {'' if response['muted'] else 'not '}muted"
+    print(
+        f"Volume is currently set to [bold]{response['volume']}[/bold] and is currently {'[red]' if response['muted'] else '[green]not '}muted"
     )
 
 

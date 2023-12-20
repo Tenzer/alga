@@ -1,17 +1,20 @@
-import typer
+from typing import Annotated
+
+from rich import print
+from typer import Argument, Typer
 
 from alga import client
 
 
-app = typer.Typer(no_args_is_help=True)
+app = Typer(no_args_is_help=True)
 
 
 @app.command()
 def get() -> None:
     response = client.request("ssap://audio/getSoundOutput")
-    typer.echo(f"The current sound output is {response['soundOutput']}")
+    print(f"The current sound output is [bold]{response['soundOutput']}[/bold]")
 
 
 @app.command()
-def set(value: str) -> None:
+def set(value: Annotated[str, Argument()]) -> None:
     client.request("ssap://audio/changeSoundOutput", {"output": value})

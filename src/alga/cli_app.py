@@ -1,13 +1,14 @@
-from typing import Optional
+from typing import Annotated, Optional
 
-import typer
+from rich import print
 from rich.console import Console
 from rich.table import Table
+from typer import Argument, Typer
 
 from alga import client
 
 
-app = typer.Typer(no_args_is_help=True)
+app = Typer(no_args_is_help=True)
 
 
 @app.command()
@@ -15,16 +16,19 @@ def current() -> None:
     response = client.request(
         "ssap://com.webos.applicationManager/getForegroundAppInfo"
     )
-    typer.echo(f"The current app is {response['appId']}")
+    print(f"The current app is [bold]{response['appId']}[/bold]")
 
 
 @app.command()
-def close(app_id: str) -> None:
+def close(app_id: Annotated[str, Argument()]) -> None:
     client.request("ssap://system.launcher/close")
 
 
 @app.command()
-def launch(app_id: str, content: Optional[str] = None) -> None:
+def launch(
+    app_id: Annotated[str, Argument()],
+    content: Annotated[Optional[str], Argument()] = None,
+) -> None:
     client.request("ssap://system.launcher/launch", {"id": app_id})
 
 

@@ -1,15 +1,17 @@
-import typer
+from typing import Annotated
+
 from rich.console import Console
 from rich.table import Table
+from typer import Argument, Typer
 
 from alga import client
 
 
-app = typer.Typer(no_args_is_help=True)
+app = Typer(no_args_is_help=True)
 
 
 @app.command()
-def set(value: str) -> None:
+def set(value: Annotated[str, Argument()]) -> None:
     client.request("ssap://tv/switchInput", {"inputId": value})
 
 
