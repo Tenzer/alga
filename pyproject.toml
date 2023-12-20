@@ -1,0 +1,58 @@
+[tool.poetry]
+name = "alga"
+version = "0.0.0"
+description = "CLI for remote controlling LG webOS TVs"
+authors = ["Jeppe Fihl-Pearson <jeppe@tenzer.dk>"]
+license = "MIT"
+repository = "https://github.com/Tenzer/alga"
+readme = "README.md"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Home Automation",
+    "Topic :: Multimedia",
+    "Typing :: Typed",
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+rich = "*"
+typer = {version = "*", extras = ["all"]}
+websocket-client = "*"
+
+[tool.poetry.scripts]
+alga = "alga:app"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+target-version = "py312"
+select = [
+    "E",  # pycodestyle
+    "F",  # Pyflakes
+    "I",  # isort
+    "PL",  # Pylint
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # Line too long
+    "UP007",  # Use `X | Y` for type annotations"
+]
+
+[tool.ruff.format]
+skip-magic-trailing-comma = true
+
+[tool.ruff.isort]
+combine-as-imports = true
+lines-after-imports = 2
+split-on-trailing-comma = false
