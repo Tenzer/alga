@@ -26,7 +26,7 @@ typer = {version = "*", extras = ["all"]}
 websocket-client = "*"
 
 [tool.poetry.scripts]
-alga = "alga:app"
+alga = "alga.__main__:app"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "*"

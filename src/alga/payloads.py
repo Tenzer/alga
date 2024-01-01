@@ -70,11 +70,16 @@ def get_hello_data(client_key: str | None = None) -> dict[str, Any]:
                         "signatureVersion": 1,
                     }
                 ],
+                # These can't be changed, then we get "insufficient permissions" errors
                 "signed": {
-                    "appId": "dk.tenzer.alga",
-                    "created": "20231220",
-                    "localizedAppNames": {"": "Alga"},
-                    "localizedVendorNames": {"": "Jeppe Fihl-Pearson"},
+                    "appId": "com.lge.test",
+                    "created": "20140509",
+                    "localizedAppNames": {
+                        "": "LG Remote App",
+                        "ko-KR": "리모컨 앱",
+                        "zxx-XX": "ЛГ Rэмotэ AПП",
+                    },
+                    "localizedVendorNames": {"": "LG Electronics"},
                     "permissions": [
                         "TEST_SECURE",
                         "CONTROL_INPUT_TEXT",
@@ -94,7 +99,7 @@ def get_hello_data(client_key: str | None = None) -> dict[str, Any]:
                         "READ_TV_CURRENT_TIME",
                     ],
                     "serial": "2f930e2d2cfe083771f68e4fe7bb07",
-                    "vendorId": "dk.tenzer",
+                    "vendorId": "com.lge",
                 },
             },
             "pairingType": "PROMPT",
