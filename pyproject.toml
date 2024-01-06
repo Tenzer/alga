@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "alga"
-version = "0.1.0"
+version = "0.2.0"
 description = "CLI for remote controlling LG webOS TVs"
 authors = ["Jeppe Fihl-Pearson <jeppe@tenzer.dk>"]
 license = "MIT"
@@ -23,6 +23,7 @@ classifiers = [
 python = "^3.12"
 rich = "*"
 typer = {version = "*", extras = ["all"]}
+wakeonlan = "*"
 websocket-client = "*"
 
 [tool.poetry.scripts]

@@ -13,4 +13,3 @@ Work yet to do:
 * Add CI for running Ruff and Mypy
 * Add CI for releasing versions to PyPI when tags are added
 * Add support for Python versions besides 3.12
-* Add support for turning on TV using Wake-on-LAN
