@@ -1,19 +1,18 @@
-from typing import Annotated
-
 from rich import print
-from typer import Argument, Typer
+from typer import Typer
 
 from alga import (
     __version__,
+    cli_adhoc,
     cli_app,
     cli_channel,
     cli_input,
     cli_media,
     cli_power,
+    cli_setup,
     cli_sound_output,
     cli_volume,
 )
-from alga.setup import setup_guide
 
 
 app = Typer(no_args_is_help=True)
@@ -25,10 +24,10 @@ app.add_typer(cli_power.app, name="power")
 app.add_typer(cli_sound_output.app, name="sound-output")
 app.add_typer(cli_volume.app, name="volume")
 
-
-@app.command()
-def setup(hostname: Annotated[str, Argument()] = "lgwebostv") -> None:
-    setup_guide(hostname)
+# Commands that only has a single sub-command
+# https://github.com/tiangolo/typer/issues/243
+app.command()(cli_adhoc.adhoc)
+app.command()(cli_setup.setup)
 
 
 @app.command()

@@ -1,8 +1,10 @@
 import json
 from ipaddress import ip_address
 from socket import gaierror, getaddrinfo
+from typing import Annotated
 
 from rich import print
+from typer import Argument
 
 from alga import client
 from alga.payloads import get_hello_data
@@ -17,7 +19,7 @@ def _ip_from_hostname(hostname: str) -> str | None:
         return None
 
 
-def setup_guide(hostname: str) -> None:
+def setup(hostname: Annotated[str, Argument()] = "lgwebostv") -> None:
     # Check if we have been passed an IP address
     ip: str | None
     try:

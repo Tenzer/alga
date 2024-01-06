@@ -23,6 +23,7 @@ classifiers = [
 python = "^3.12"
 rich = "*"
 typer = {version = "*", extras = ["all"]}
+wakeonlan = "*"
 websocket-client = "*"
 
 [tool.poetry.scripts]
