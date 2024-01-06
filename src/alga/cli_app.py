@@ -49,3 +49,12 @@ def list() -> None:
 
     console = Console()
     console.print(table)
+
+
+@app.command()
+def info(app_id: str) -> None:
+    response = client.request(
+        "ssap://com.webos.applicationManager/getAppInfo", {"id": app_id}
+    )
+
+    print(response["appInfo"])
