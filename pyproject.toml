@@ -38,6 +38,8 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 target-version = "py312"
+
+[tool.ruff.lint]
 select = [
     "E",  # pycodestyle
     "F",  # Pyflakes
@@ -50,10 +52,11 @@ ignore = [
     "UP007",  # Use `X | Y` for type annotations"
 ]
 
-[tool.ruff.format]
-skip-magic-trailing-comma = true
-
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 combine-as-imports = true
+known-first-party = ["alga"]
 lines-after-imports = 2
 split-on-trailing-comma = false
+
+[tool.ruff.format]
+skip-magic-trailing-comma = true
