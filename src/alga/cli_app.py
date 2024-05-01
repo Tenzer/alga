@@ -1,3 +1,4 @@
+import json
 from typing import Annotated, Optional
 
 from rich import print
@@ -21,15 +22,18 @@ def current() -> None:
 
 @app.command()
 def close(app_id: Annotated[str, Argument()]) -> None:
-    client.request("ssap://system.launcher/close")
+    client.request("ssap://system.launcher/close", {"id": app_id})
 
 
 @app.command()
 def launch(
     app_id: Annotated[str, Argument()],
-    content: Annotated[Optional[str], Argument()] = None,
+    data: Annotated[Optional[str], Argument()] = None,
 ) -> None:
-    client.request("ssap://system.launcher/launch", {"id": app_id})
+    payload = {"id": app_id}
+    if data:
+        payload.update(json.loads(data))
+    client.request("ssap://system.launcher/launch", payload)
 
 
 @app.command()
@@ -41,8 +45,8 @@ def list() -> None:
     table.add_column("ID")
 
     all_apps = []
-    for a in response["apps"]:
-        all_apps.append([a["title"], a["id"]])
+    for app in response["apps"]:
+        all_apps.append([app["title"], app["id"]])
 
     for row in sorted(all_apps):
         table.add_row(*row)

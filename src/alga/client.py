@@ -15,7 +15,9 @@ KEY = getenv("ALGA_KEY", "")
 
 
 @contextmanager
-def new(perform_handshake: bool = True, timeout: int = 3) -> Iterator[WebSocket]:
+def new(
+    perform_handshake: bool = True, timeout: int = 3
+) -> Iterator[WebSocket]:  # pragma: no cover
     connection = WebSocket(sslopt={"cert_reqs": ssl.CERT_NONE})
     connection.connect(f"wss://{HOSTNAME}:3001/", suppress_origin=True, timeout=timeout)  # type: ignore[no-untyped-call]
 
@@ -33,7 +35,9 @@ def new(perform_handshake: bool = True, timeout: int = 3) -> Iterator[WebSocket]
         connection.close()
 
 
-def request(uri: str, data: dict[str, Any] | None = None) -> dict[str, Any]:
+def request(
+    uri: str, data: dict[str, Any] | None = None
+) -> dict[str, Any]:  # pragma: no cover
     with new() as connection:
         request: dict[str, Any] = {"type": "request", "uri": uri}
 

@@ -4,7 +4,7 @@ from socket import gaierror, getaddrinfo
 from typing import Annotated
 
 from rich import print
-from typer import Argument
+from typer import Argument, Exit
 
 from alga import client
 from alga.payloads import get_hello_data
@@ -30,9 +30,11 @@ def setup(hostname: Annotated[str, Argument()] = "lgwebostv") -> None:
             print(
                 f"[red]Could not find any host by the name '{hostname}'.[/red] Is the TV on and connected to the network?"
             )
-            return
+            raise Exit(code=1)
 
-    with client.new(perform_handshake=False, timeout=60) as connection:
+    with client.new(
+        perform_handshake=False, timeout=60
+    ) as connection:  # pragma: no cover
         connection.send(json.dumps(get_hello_data()))
         response = json.loads(connection.recv())
         assert response == {
@@ -45,7 +47,8 @@ def setup(hostname: Annotated[str, Argument()] = "lgwebostv") -> None:
         response = json.loads(connection.recv())
         if "client-key" not in response["payload"]:
             print("[red]Setup failed![/red]")
-            return
+            raise Exit(code=1)
+
         print(
             f"Got key: {response['payload']['client-key']}. Please put this in the `ALGA_KEY` environment variable"
         )

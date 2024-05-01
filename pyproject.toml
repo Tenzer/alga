@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "alga"
-version = "0.2.0"
+version = "0.3.0"
 description = "CLI for remote controlling LG webOS TVs"
 authors = ["Jeppe Fihl-Pearson <jeppe@tenzer.dk>"]
 license = "MIT"
@@ -26,11 +26,15 @@ typer = {version = "*", extras = ["all"]}
 wakeonlan = "*"
 websocket-client = "*"
 
+[tool.poetry.group.dev.dependencies]
+coverage = "*"
+faker = "*"
+mypy = "*"
+pytest = "*"
+pytest-cov = "*"
+
 [tool.poetry.scripts]
 alga = "alga.__main__:app"
-
-[tool.poetry.group.dev.dependencies]
-mypy = "*"
 
 [build-system]
 requires = ["poetry-core"]
@@ -60,3 +64,16 @@ split-on-trailing-comma = false
 
 [tool.ruff.format]
 skip-magic-trailing-comma = true
+
+[tool.pytest.ini_options]
+addopts = """
+    --cov
+    --cov-fail-under=100
+    --cov-report=term-missing:skip-covered
+    --no-cov-on-fail
+"""
+
+[tool.coverage.report]
+exclude_also = [
+    "if __name__ == .__main__.:",
+]
