@@ -8,7 +8,7 @@ It is still in it's early stages of development but the implemented functionalit
 Work yet to do:
 ---------------
 
-* Add tests
+* Add tests for websocket communication
 * Add way of adding TV without having to set environment variables
 * Add CI for running Ruff and Mypy
 * Add CI for releasing versions to PyPI when tags are added
