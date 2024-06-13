@@ -77,3 +77,7 @@ addopts = """
 exclude_also = [
     "if __name__ == .__main__.:",
 ]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
