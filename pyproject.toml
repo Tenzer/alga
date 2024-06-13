@@ -13,6 +13,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Topic :: Home Automation",
@@ -21,7 +22,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 rich = "*"
 typer = {version = "*", extras = ["all"]}
 wakeonlan = "*"
@@ -42,7 +43,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
-target-version = "py311"
+target-version = "py310"
 
 [tool.ruff.lint]
 select = [
@@ -80,5 +81,5 @@ exclude_also = [
 ]
 
 [tool.mypy]
-python_version = "3.11"
+python_version = "3.10"
 strict = true
