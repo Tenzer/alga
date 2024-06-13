@@ -11,4 +11,3 @@ Work yet to do:
 * Add tests for websocket communication
 * Add way of adding TV without having to set environment variables
 * Add CI for releasing versions to PyPI when tags are added
-* Add support for Python versions besides 3.12
