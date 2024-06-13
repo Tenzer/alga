@@ -1,7 +1,7 @@
-from typing import Any
+from typing import Any, Optional
 
 
-def get_hello_data(client_key: str | None = None) -> dict[str, Any]:
+def get_hello_data(client_key: Optional[str] = None) -> dict[str, Any]:
     return {
         "id": "register_0",
         "payload": {

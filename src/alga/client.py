@@ -3,7 +3,7 @@ import ssl
 from collections.abc import Iterator
 from contextlib import contextmanager
 from os import getenv
-from typing import Any, cast
+from typing import Any, Optional, cast
 
 from websocket import WebSocket
 
@@ -36,7 +36,7 @@ def new(
 
 
 def request(
-    uri: str, data: dict[str, Any] | None = None
+    uri: str, data: Optional[dict[str, Any]] = None
 ) -> dict[str, Any]:  # pragma: no cover
     with new() as connection:
         request: dict[str, Any] = {"type": "request", "uri": uri}
