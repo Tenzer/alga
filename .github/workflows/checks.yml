@@ -94,7 +94,7 @@ jobs:
 
       - name: Check usage.md is up-to-date
         run: |
-          ./generate-usage.sh
+          poetry run ./generate-usage.sh
           git diff --exit-code
 
   all-checks-passed:
