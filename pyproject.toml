@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "alga"
-version = "0.4.0"
+version = "1.0.0"
 description = "CLI for remote controlling LG webOS TVs"
 authors = ["Jeppe Fihl-Pearson <jeppe@tenzer.dk>"]
 license = "MIT"
 repository = "https://github.com/Tenzer/alga"
 readme = "README.md"
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
     "Intended Audience :: End Users/Desktop",
     "License :: OSI Approved :: MIT License",
