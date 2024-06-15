@@ -9,4 +9,3 @@ Work yet to do:
 ---------------
 
 * Add tests for websocket communication and TV setup
-* Add CI for releasing versions to PyPI when tags are added

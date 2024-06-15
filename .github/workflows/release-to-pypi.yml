@@ -1,0 +1,52 @@
+---
+name: Release to PyPI
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          cache: poetry
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Build package
+        run: poetry build
+
+      - name: Store release files
+        uses: actions/upload-artifact@v4
+        with:
+          name: release
+          path: dist/
+
+  upload:
+    runs-on: ubuntu-24.04
+    needs:
+      - build
+
+    permissions:
+      id-token: write
+
+    steps:
+      - name: Fetch release files
+        uses: actions/download-artifact@v4
+        with:
+          name: release
+          path: dist/
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
