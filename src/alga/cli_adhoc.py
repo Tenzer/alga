@@ -8,6 +8,8 @@ from alga import client
 
 
 def adhoc(path: str, data: Annotated[Optional[str], Argument()] = None) -> None:
+    """Send raw request to the TV"""
+
     if data:
         print(client.request(path, json.loads(data)))
     else:

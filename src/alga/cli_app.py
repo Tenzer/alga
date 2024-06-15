@@ -9,11 +9,13 @@ from typer import Argument, Typer
 from alga import client
 
 
-app = Typer(no_args_is_help=True)
+app = Typer(no_args_is_help=True, help="Apps installed on the TV")
 
 
 @app.command()
 def current() -> None:
+    """Get the current app"""
+
     response = client.request(
         "ssap://com.webos.applicationManager/getForegroundAppInfo"
     )
@@ -22,6 +24,8 @@ def current() -> None:
 
 @app.command()
 def close(app_id: Annotated[str, Argument()]) -> None:
+    """Close the provided app"""
+
     client.request("ssap://system.launcher/close", {"id": app_id})
 
 
@@ -30,6 +34,8 @@ def launch(
     app_id: Annotated[str, Argument()],
     data: Annotated[Optional[str], Argument()] = None,
 ) -> None:
+    """Launch an app"""
+
     payload = {"id": app_id}
     if data:
         payload.update(json.loads(data))
@@ -38,6 +44,8 @@ def launch(
 
 @app.command()
 def list() -> None:
+    """List installed apps"""
+
     response = client.request("ssap://com.webos.applicationManager/listApps")
 
     table = Table()
@@ -57,6 +65,8 @@ def list() -> None:
 
 @app.command()
 def info(app_id: str) -> None:
+    """Show info about specific app"""
+
     response = client.request(
         "ssap://com.webos.applicationManager/getAppInfo", {"id": app_id}
     )

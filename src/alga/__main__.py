@@ -32,6 +32,8 @@ app.command()(cli_setup.setup)
 
 @app.command()
 def version() -> None:
+    """Print Alga version"""
+
     print(f"alga version [bold]{__version__}[/bold]")
 
 

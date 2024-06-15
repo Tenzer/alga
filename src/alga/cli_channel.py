@@ -8,11 +8,13 @@ from typer import Argument, Typer
 from alga import client
 
 
-app = Typer(no_args_is_help=True)
+app = Typer(no_args_is_help=True, help="TV channels")
 
 
 @app.command()
 def current() -> None:
+    """Get the current channel"""
+
     response = client.request("ssap://tv/getCurrentChannel")
     print(
         f"The current channel is [bold]{response['channelName']}[/bold] ([italic]{response['channelNumber']}[/italic])"
@@ -21,21 +23,29 @@ def current() -> None:
 
 @app.command()
 def up() -> None:
+    """Change channel up"""
+
     client.request("ssap://tv/channelUp")
 
 
 @app.command()
 def down() -> None:
+    """Change channel down"""
+
     client.request("ssap://tv/channelDown")
 
 
 @app.command()
 def set(value: Annotated[int, Argument()]) -> None:
+    """Change to specific channel"""
+
     client.request("ssap://tv/openChannel", {"channelNumber": value})
 
 
 @app.command()
 def list() -> None:
+    """List available channels"""
+
     response = client.request("ssap://tv/getChannelList")
 
     table = Table()

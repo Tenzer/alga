@@ -7,16 +7,20 @@ from typer import Argument, Typer
 from alga import client
 
 
-app = Typer(no_args_is_help=True)
+app = Typer(no_args_is_help=True, help="HDMI and similar inputs")
 
 
 @app.command()
 def set(value: Annotated[str, Argument()]) -> None:
+    """Switch to given input"""
+
     client.request("ssap://tv/switchInput", {"inputId": value})
 
 
 @app.command()
 def list() -> None:
+    """List available inputs"""
+
     response = client.request("ssap://tv/getExternalInputList")
 
     table = Table()

@@ -24,6 +24,8 @@ def _ip_from_hostname(hostname: str) -> Optional[str]:
 def setup(
     hostname: Annotated[str, Argument()] = "lgwebostv",
 ) -> None:  # pragma: no cover
+    """Pair a new TV"""
+
     # Check if we have been passed an IP address
     ip: Optional[str]
     try:
