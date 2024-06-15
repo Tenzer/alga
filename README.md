@@ -47,4 +47,4 @@ Tests are run for each of the supported Python versions in CI.
 
 [pre-commit](https://pre-commit.com/) used to run Ruff for linting and formatting.
 
-`usage.md` is updated via `./generate-usage.sh`.
+`usage.md` is updated via `poetry run ./generate-usage.sh`.
