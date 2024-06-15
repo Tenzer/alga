@@ -3,10 +3,11 @@ from ipaddress import ip_address
 from socket import gaierror, getaddrinfo
 from typing import Annotated, Optional
 
+from getmac import get_mac_address
 from rich import print
 from typer import Argument, Exit
 
-from alga import client
+from alga import client, config
 from alga.payloads import get_hello_data
 
 
@@ -19,7 +20,9 @@ def _ip_from_hostname(hostname: str) -> Optional[str]:
         return None
 
 
-def setup(hostname: Annotated[str, Argument()] = "lgwebostv") -> None:
+def setup(
+    hostname: Annotated[str, Argument()] = "lgwebostv",
+) -> None:  # pragma: no cover
     # Check if we have been passed an IP address
     ip: Optional[str]
     try:
@@ -33,8 +36,8 @@ def setup(hostname: Annotated[str, Argument()] = "lgwebostv") -> None:
             raise Exit(code=1)
 
     with client.new(
-        perform_handshake=False, timeout=60
-    ) as connection:  # pragma: no cover
+        hostname=hostname, perform_handshake=False, timeout=60
+    ) as connection:
         connection.send(json.dumps(get_hello_data()))
         response = json.loads(connection.recv())
         assert response == {
@@ -45,10 +48,17 @@ def setup(hostname: Annotated[str, Argument()] = "lgwebostv") -> None:
         print("Please approve the connection request on the TV now...")
 
         response = json.loads(connection.recv())
-        if "client-key" not in response["payload"]:
-            print("[red]Setup failed![/red]")
-            raise Exit(code=1)
 
-        print(
-            f"Got key: {response['payload']['client-key']}. Please put this in the `ALGA_KEY` environment variable"
-        )
+    if "client-key" not in response["payload"]:
+        print("[red]Setup failed![/red]")
+        raise Exit(code=1)
+
+    mac_address = get_mac_address(ip=ip)
+
+    cfg = config.get()
+    cfg.update(
+        hostname=hostname, key=response["payload"]["client-key"], mac=mac_address
+    )
+    config.write(cfg)
+
+    print("TV configured, Alga is ready to use")

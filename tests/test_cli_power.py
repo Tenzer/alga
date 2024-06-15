@@ -17,11 +17,17 @@ def test_off(mock_request: mock.MagicMock) -> None:
     assert result.stdout == ""
 
 
+@mock.patch("alga.config.get")
 @mock.patch("alga.cli_power.send_magic_packet")
-def test_on(mock_send_magic_packet: mock.MagicMock, faker: Faker) -> None:
+def test_on(
+    mock_send_magic_packet: mock.MagicMock,
+    mock_config_get: mock.MagicMock,
+    faker: Faker,
+) -> None:
     mac_address = faker.pystr()
+    mock_config_get.return_value = {"mac": mac_address}
 
-    result = runner.invoke(app, ["power", "on", mac_address])
+    result = runner.invoke(app, ["power", "on"])
 
     mock_send_magic_packet.assert_called_once_with(mac_address)
     assert result.exit_code == 0

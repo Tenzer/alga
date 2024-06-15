@@ -1,7 +1,7 @@
 from typer import Typer
 from wakeonlan import send_magic_packet
 
-from alga import client
+from alga import client, config
 
 
 app = Typer(no_args_is_help=True)
@@ -13,5 +13,6 @@ def off() -> None:
 
 
 @app.command()
-def on(mac: str) -> None:
-    send_magic_packet(mac)
+def on() -> None:
+    cfg = config.get()
+    send_magic_packet(cfg["mac"])

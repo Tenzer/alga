@@ -2,27 +2,38 @@ import json
 import ssl
 from collections.abc import Iterator
 from contextlib import contextmanager
-from os import getenv
 from typing import Any, Optional, cast
 
+from rich import print
+from typer import Exit
 from websocket import WebSocket
 
+from alga import config
 from alga.payloads import get_hello_data
-
-
-HOSTNAME = getenv("ALGA_HOST", "lgwebostv")
-KEY = getenv("ALGA_KEY", "")
 
 
 @contextmanager
 def new(
-    perform_handshake: bool = True, timeout: int = 3
+    hostname: Optional[str] = None, perform_handshake: bool = True, timeout: int = 3
 ) -> Iterator[WebSocket]:  # pragma: no cover
+    cfg = config.get()
+
+    if hostname is None:
+        if "hostname" not in cfg:
+            print("[red]No connection configured, run 'alga setup' first[/red]")
+            raise Exit(code=1)
+
+        hostname = cfg["hostname"]
+
     connection = WebSocket(sslopt={"cert_reqs": ssl.CERT_NONE})
-    connection.connect(f"wss://{HOSTNAME}:3001/", suppress_origin=True, timeout=timeout)  # type: ignore[no-untyped-call]
+    connection.connect(f"wss://{hostname}:3001/", suppress_origin=True, timeout=timeout)  # type: ignore[no-untyped-call]
 
     if perform_handshake:
-        connection.send(json.dumps(get_hello_data(KEY)))
+        if "key" not in cfg:
+            print("[red]No connection configured, run 'alga setup' first[/red]")
+            raise Exit(code=1)
+
+        connection.send(json.dumps(get_hello_data(cfg["key"])))
         response = json.loads(connection.recv())
         if "client-key" not in response["payload"]:
             raise Exception(
