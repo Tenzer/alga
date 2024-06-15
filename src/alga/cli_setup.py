@@ -5,6 +5,7 @@ from typing import Annotated, Optional
 
 from getmac import get_mac_address
 from rich import print
+from rich.console import Console
 from typer import Argument, Exit
 
 from alga import client, config
@@ -45,9 +46,10 @@ def setup(
             "payload": {"pairingType": "PROMPT", "returnValue": True},
             "type": "response",
         }, "Unexpected response received"
-        print("Please approve the connection request on the TV now...")
 
-        response = json.loads(connection.recv())
+        console = Console()
+        with console.status("Please approve the connection request on the TV now..."):
+            response = json.loads(connection.recv())
 
     if "client-key" not in response["payload"]:
         print("[red]Setup failed![/red]")
