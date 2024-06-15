@@ -33,13 +33,13 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - name: Checkout
+      - name: Checkout the code
         uses: actions/checkout@v4
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v5
 
-      - name: Pre-commit
+      - name: Run pre-commit
         uses: pre-commit/action@v3.0.1
 
   pytest:
@@ -74,6 +74,29 @@ jobs:
       - name: Run pytest
         run: poetry run pytest
 
+  usage:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          cache: poetry
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Check usage.md is up-to-date
+        run: |
+          ./generate-usage.sh
+          git diff --exit-code
+
   all-checks-passed:
     if: always()
 
@@ -81,6 +104,7 @@ jobs:
     - mypy
     - pre-commit
     - pytest
+    - usage
 
     runs-on: ubuntu-24.04
 
