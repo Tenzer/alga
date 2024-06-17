@@ -14,6 +14,12 @@ I would recommend installing it via [pipx](https://pipx.pypa.io/stable/):
 $ pipx install alga
 ```
 
+Or, via [Nix flakes](https://nixos.org/):
+
+```shell
+nix run github:Tenzer/alga
+```
+
 
 Setup
 -----
