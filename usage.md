@@ -19,7 +19,7 @@ $ alga [OPTIONS] COMMAND [ARGS]...
 * `channel`: TV channels
 * `input`: HDMI and similar inputs
 * `media`: Control the playing media
-* `power`: Turn TV on and off
+* `power`: Turn TV (or screen) on and off
 * `setup`: Pair a new TV
 * `sound-output`: Audio output device
 * `version`: Print Alga version
@@ -390,7 +390,7 @@ $ alga media stop [OPTIONS]
 
 ## `alga power`
 
-Turn TV on and off
+Turn TV (or screen) on and off
 
 **Usage**:
 
@@ -406,6 +406,8 @@ $ alga power [OPTIONS] COMMAND [ARGS]...
 
 * `off`: Turn TV off
 * `on`: Turn TV on via Wake-on-LAN
+* `screen-off`: Turn TV screen off
+* `screen-on`: Turn TV screen on
 
 ### `alga power off`
 
@@ -429,6 +431,34 @@ Turn TV on via Wake-on-LAN
 
 ```console
 $ alga power on [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+### `alga power screen-off`
+
+Turn TV screen off
+
+**Usage**:
+
+```console
+$ alga power screen-off [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+### `alga power screen-on`
+
+Turn TV screen on
+
+**Usage**:
+
+```console
+$ alga power screen-on [OPTIONS]
 ```
 
 **Options**:
