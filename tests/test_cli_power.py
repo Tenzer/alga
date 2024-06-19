@@ -20,16 +20,22 @@ def test_off(mock_request: mock.MagicMock) -> None:
 def test_screen_off(mock_request: mock.MagicMock) -> None:
     result = runner.invoke(app, ["power", "screen-off"])
 
-    mock_request.assert_called_once_with("ssap://com.webos.service.tvpower/power/turnOffScreen")
+    mock_request.assert_called_once_with(
+        "ssap://com.webos.service.tvpower/power/turnOffScreen"
+    )
     assert result.exit_code == 0
     assert result.stdout == ""
+
 
 def test_screen_on(mock_request: mock.MagicMock) -> None:
     result = runner.invoke(app, ["power", "screen-on"])
 
-    mock_request.assert_called_once_with("ssap://com.webos.service.tvpower/power/turnOnScreen")
+    mock_request.assert_called_once_with(
+        "ssap://com.webos.service.tvpower/power/turnOnScreen"
+    )
     assert result.exit_code == 0
     assert result.stdout == ""
+
 
 @mock.patch("alga.config.get")
 @mock.patch("alga.cli_power.send_magic_packet")
