@@ -10,6 +10,11 @@ jobs:
   build:
     runs-on: ubuntu-24.04
 
+    permissions:
+      attestations: write
+      contents: read
+      id-token: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -26,6 +31,11 @@ jobs:
 
       - name: Build package
         run: poetry build
+
+      - name: Attest
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: dist/*
 
       - name: Store release files
         uses: actions/upload-artifact@v4
