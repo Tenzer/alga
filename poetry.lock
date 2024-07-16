@@ -133,13 +133,13 @@ python-dateutil = ">=2.4"
 
 [[package]]
 name = "getmac"
-version = "0.9.4"
+version = "0.9.5"
 description = "Get MAC addresses of remote hosts and local interfaces"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,>=2.7"
 files = [
-    {file = "getmac-0.9.4-py2.py3-none-any.whl", hash = "sha256:a981f2609ca64e9b364de3e1900d41cb93896a2a68aaec8583369e1a2d33bc15"},
-    {file = "getmac-0.9.4.tar.gz", hash = "sha256:8477755b69ff93a3b514b54e1fbb8ebb57d8f4e5c37e7c18bcef3a0f1f149232"},
+    {file = "getmac-0.9.5-py2.py3-none-any.whl", hash = "sha256:22b8a3e15bc0c6bfa94651a3f7f6cd91b59432e1d8199411d4fe12804423e0aa"},
+    {file = "getmac-0.9.5.tar.gz", hash = "sha256:456435cdbf1f5f45c433a250b8b795146e893b6fc659060f15451e812a2ab17d"},
 ]
 
 [[package]]
