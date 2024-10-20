@@ -20,6 +20,7 @@ $ alga [OPTIONS] COMMAND [ARGS]...
 * `input`: HDMI and similar inputs
 * `media`: Control the playing media
 * `power`: Turn TV (or screen) on and off
+* `remote`: Remote control button presses
 * `setup`: Pair a new TV
 * `sound-output`: Audio output device
 * `version`: Print Alga version
@@ -460,6 +461,42 @@ Turn TV screen on
 ```console
 $ alga power screen-on [OPTIONS]
 ```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `alga remote`
+
+Remote control button presses
+
+**Usage**:
+
+```console
+$ alga remote [OPTIONS] COMMAND [ARGS]...
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+**Commands**:
+
+* `send`: Send a button press to the TV
+
+### `alga remote send`
+
+Send a button press to the TV
+
+**Usage**:
+
+```console
+$ alga remote send [OPTIONS] BUTTON
+```
+
+**Arguments**:
+
+* `BUTTON`: [required]
 
 **Options**:
 
