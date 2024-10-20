@@ -42,14 +42,29 @@ def test_down(mock_request: MagicMock) -> None:
     assert result.stdout == ""
 
 
-def test_set(faker: Faker, mock_request: MagicMock) -> None:
-    channel_number = faker.pyint()
+def test_set_channel_id(faker: Faker, mock_request: MagicMock) -> None:
+    channel_id = faker.pystr()
 
-    result = runner.invoke(app, ["channel", "set", f"{channel_number}"])
+    result = runner.invoke(app, ["channel", "set", channel_id])
 
     mock_request.assert_called_once_with(
-        "ssap://tv/openChannel", {"channelNumber": channel_number}
+        "ssap://tv/openChannel", {"channelId": channel_id}
     )
+    assert result.exit_code == 0
+    assert result.stdout == ""
+
+
+def test_set_channel_number(faker: Faker, mock_request: MagicMock) -> None:
+    channel_number = str(faker.pyint())
+    channel_id = faker.pystr()
+
+    mock_request.return_value = {
+        "channelList": [{"channelId": channel_id, "channelNumber": channel_number}]
+    }
+
+    result = runner.invoke(app, ["channel", "set", channel_number])
+
+    mock_request.assert_called_with("ssap://tv/openChannel", {"channelId": channel_id})
     assert result.exit_code == 0
     assert result.stdout == ""
 
