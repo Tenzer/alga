@@ -36,10 +36,19 @@ def down() -> None:
 
 
 @app.command()
-def set(value: Annotated[int, Argument()]) -> None:
+def set(value: Annotated[str, Argument()]) -> None:
     """Change to specific channel"""
 
-    client.request("ssap://tv/openChannel", {"channelNumber": value})
+    if value.isnumeric():
+        # If a channel number is provided, we look up the channel ID as some models require it.
+        response = client.request("ssap://tv/getChannelList")
+
+        for channel in response["channelList"]:
+            if channel["channelNumber"] == value:
+                value = channel["channelId"]
+                break
+
+    client.request("ssap://tv/openChannel", {"channelId": value})
 
 
 @app.command()
