@@ -11,13 +11,6 @@ app = Typer(no_args_is_help=True, help="HDMI and similar inputs")
 
 
 @app.command()
-def set(value: Annotated[str, Argument()]) -> None:
-    """Switch to given input"""
-
-    client.request("ssap://tv/switchInput", {"inputId": value})
-
-
-@app.command()
 def list() -> None:
     """List available inputs"""
 
@@ -36,3 +29,10 @@ def list() -> None:
 
     console = Console()
     console.print(table)
+
+
+@app.command()
+def set(value: Annotated[str, Argument()]) -> None:
+    """Switch to given input"""
+
+    client.request("ssap://tv/switchInput", {"inputId": value})
