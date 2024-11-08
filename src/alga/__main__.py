@@ -1,8 +1,6 @@
-from rich import print
 from typer import Typer
 
 from alga import (
-    __version__,
     cli_adhoc,
     cli_app,
     cli_channel,
@@ -12,6 +10,7 @@ from alga import (
     cli_remote,
     cli_setup,
     cli_sound_output,
+    cli_version,
     cli_volume,
 )
 
@@ -30,13 +29,7 @@ app.add_typer(cli_volume.app, name="volume")
 # https://github.com/tiangolo/typer/issues/243
 app.command()(cli_adhoc.adhoc)
 app.command()(cli_setup.setup)
-
-
-@app.command()
-def version() -> None:
-    """Print Alga version"""
-
-    print(f"alga version [bold]{__version__}[/bold]")
+app.command()(cli_version.version)
 
 
 if __name__ == "__main__":

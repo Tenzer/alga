@@ -13,6 +13,13 @@ app = Typer(no_args_is_help=True, help="Apps installed on the TV")
 
 
 @app.command()
+def close(app_id: Annotated[str, Argument()]) -> None:
+    """Close the provided app"""
+
+    client.request("ssap://system.launcher/close", {"id": app_id})
+
+
+@app.command()
 def current() -> None:
     """Get the current app"""
 
@@ -23,10 +30,14 @@ def current() -> None:
 
 
 @app.command()
-def close(app_id: Annotated[str, Argument()]) -> None:
-    """Close the provided app"""
+def info(app_id: str) -> None:
+    """Show info about specific app"""
 
-    client.request("ssap://system.launcher/close", {"id": app_id})
+    response = client.request(
+        "ssap://com.webos.applicationManager/getAppInfo", {"id": app_id}
+    )
+
+    print(response["appInfo"])
 
 
 @app.command()
@@ -61,14 +72,3 @@ def list() -> None:
 
     console = Console()
     console.print(table)
-
-
-@app.command()
-def info(app_id: str) -> None:
-    """Show info about specific app"""
-
-    response = client.request(
-        "ssap://com.webos.applicationManager/getAppInfo", {"id": app_id}
-    )
-
-    print(response["appInfo"])

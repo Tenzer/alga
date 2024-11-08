@@ -7,10 +7,10 @@ app = Typer(no_args_is_help=True, help="Control the playing media")
 
 
 @app.command()
-def play() -> None:
-    """Play media"""
+def fast_forward() -> None:
+    """Fast forward media"""
 
-    client.request("ssap://media.controls/play")
+    client.request("ssap://media.controls/fastForward")
 
 
 @app.command()
@@ -21,17 +21,10 @@ def pause() -> None:
 
 
 @app.command()
-def stop() -> None:
-    """Stop media"""
+def play() -> None:
+    """Play media"""
 
-    client.request("ssap://media.controls/stop")
-
-
-@app.command()
-def fast_forward() -> None:
-    """Fast forward media"""
-
-    client.request("ssap://media.controls/fastForward")
+    client.request("ssap://media.controls/play")
 
 
 @app.command()
@@ -39,3 +32,10 @@ def rewind() -> None:
     """Rewind media"""
 
     client.request("ssap://media.controls/rewind")
+
+
+@app.command()
+def stop() -> None:
+    """Stop media"""
+
+    client.request("ssap://media.controls/stop")
