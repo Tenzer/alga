@@ -24,7 +24,7 @@ def test_without_data(faker: Faker, mock_request: MagicMock) -> None:
 
 def test_with_data(faker: Faker, mock_request: MagicMock) -> None:
     path = faker.pystr()
-    data = faker.pydict()
+    data = faker.pydict(allowed_types=[str, float, int])
     return_value = faker.pystr()
     mock_request.return_value = return_value
 
