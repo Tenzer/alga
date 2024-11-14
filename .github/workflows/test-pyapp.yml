@@ -1,0 +1,115 @@
+---
+name: Test PyApp binaries creation
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Build package
+        run: poetry build
+
+      - name: Store release files
+        uses: actions/upload-artifact@v4
+        with:
+          name: release
+          path: dist/
+
+      - name: Get version
+        id: version
+        run: echo "value=$(poetry version --short)" >> "$GITHUB_OUTPUT"
+
+    outputs:
+      version: ${{ steps.version.outputs.value }}
+
+  pyapp-linux:
+    runs-on: ubuntu-24.04
+    needs:
+      - build
+
+    steps:
+      - name: Fetch release files
+        uses: actions/download-artifact@v4
+        with:
+          name: release
+          path: dist/
+
+      - name: Prepare wheel
+        run: |
+          cp dist/alga-${{ needs.build.outputs.version }}-py3-none-any.whl alga.whl
+
+      - name: Get PyApp
+        run: |
+          mkdir pyapp
+          curl \
+            --location \
+            https://github.com/ofek/pyapp/releases/latest/download/source.tar.gz | \
+          tar xz \
+            --directory=pyapp \
+            --strip-components=1
+
+      - name: Create binary
+        env:
+          PYAPP_PROJECT_NAME: alga
+          PYAPP_PROJECT_PATH: ../alga.whl
+        working-directory: pyapp/
+        run: cargo build --release
+
+      - name: Rename
+        run: cp pyapp/target/release/pyapp alga-linux-amd64
+
+      - name: Make built file available
+        uses: actions/upload-artifact@v4
+        with:
+          name: binary-linux-amd64
+          path: alga-linux-amd64
+
+  pyapp-macos:
+    runs-on: macos-14
+    needs:
+      - build
+
+    steps:
+      - name: Fetch release files
+        uses: actions/download-artifact@v4
+        with:
+          name: release
+          path: dist/
+
+      - name: Prepare wheel
+        run: |
+          cp dist/alga-${{ needs.build.outputs.version }}-py3-none-any.whl alga.whl
+
+      - name: Get PyApp
+        run: |
+          mkdir pyapp
+          curl \
+            --location \
+            https://github.com/ofek/pyapp/releases/latest/download/source.tar.gz | \
+          tar xz \
+            --directory=pyapp \
+            --strip-components=1
+
+      - name: Create binary
+        env:
+          PYAPP_PROJECT_NAME: alga
+          PYAPP_PROJECT_PATH: ../alga.whl
+        working-directory: pyapp/
+        run: cargo build --release
+
+      - name: Rename
+        run: cp pyapp/target/release/pyapp alga-macos-arm64
+
+      - name: Make built file available
+        uses: actions/upload-artifact@v4
+        with:
+          name: binary-macos-arm64
+          path: alga-macos-arm64
