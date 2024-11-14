@@ -53,7 +53,7 @@ def test_setup_ip_not_found(
 
     mock_ip_from_hostname.assert_called_once_with(hostname)
     assert result.exit_code == 1
-    assert result.stdout == (
-        f"Could not find any host by the name '{hostname}'. Is the TV \n"
-        "on and connected to the network?\n"
+    assert (
+        result.stdout.replace("\n", "")
+        == f"Could not find any host by the name '{hostname}'. Is the TV on and connected to the network?"
     )
