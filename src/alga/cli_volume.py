@@ -22,7 +22,7 @@ def get() -> None:
 
     response = client.request("ssap://audio/getVolume")
     print(
-        f"Volume is currently set to [bold]{response['volume']}[/bold] and is currently {'[red]' if response['muted'] else '[green]not '}muted"
+        f"Volume is currently set to [bold]{response['volumeStatus']['volume']}[/bold] and is currently {'[red]' if response['volumeStatus']['muteStatus'] else '[green]not '}muted"
     )
 
 
