@@ -15,15 +15,15 @@ $ alga [OPTIONS] COMMAND [ARGS]...
 **Commands**:
 
 * `adhoc`: Send raw request to the TV
-* `setup`: Pair a new TV
-* `version`: Print Alga version
 * `app`: Apps installed on the TV
 * `channel`: TV channels
 * `input`: HDMI and similar inputs
 * `media`: Control the playing media
 * `power`: Turn TV (or screen) on and off
 * `remote`: Remote control button presses
+* `setup`: Pair a new TV
 * `sound-output`: Audio output device
+* `version`: Print Alga version
 * `volume`: Audio volume
 
 ## `alga adhoc`
@@ -40,38 +40,6 @@ $ alga adhoc [OPTIONS] PATH [DATA]
 
 * `PATH`: [required]
 * `[DATA]`
-
-**Options**:
-
-* `--help`: Show this message and exit.
-
-## `alga setup`
-
-Pair a new TV
-
-**Usage**:
-
-```console
-$ alga setup [OPTIONS] [HOSTNAME]
-```
-
-**Arguments**:
-
-* `[HOSTNAME]`: [default: lgwebostv]
-
-**Options**:
-
-* `--help`: Show this message and exit.
-
-## `alga version`
-
-Print Alga version
-
-**Usage**:
-
-```console
-$ alga version [OPTIONS]
-```
 
 **Options**:
 
@@ -534,6 +502,24 @@ $ alga remote send [OPTIONS] BUTTON
 
 * `--help`: Show this message and exit.
 
+## `alga setup`
+
+Pair a new TV
+
+**Usage**:
+
+```console
+$ alga setup [OPTIONS] [HOSTNAME]
+```
+
+**Arguments**:
+
+* `[HOSTNAME]`: [default: lgwebostv]
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
 ## `alga sound-output`
 
 Audio output device
@@ -580,6 +566,20 @@ $ alga sound-output set [OPTIONS] VALUE
 **Arguments**:
 
 * `VALUE`: [required]
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `alga version`
+
+Print Alga version
+
+**Usage**:
+
+```console
+$ alga version [OPTIONS]
+```
 
 **Options**:
 

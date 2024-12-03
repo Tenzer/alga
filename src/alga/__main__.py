@@ -16,20 +16,17 @@ from alga import (
 
 
 app = Typer(no_args_is_help=True)
+app.add_typer(cli_adhoc.app)
 app.add_typer(cli_app.app, name="app")
 app.add_typer(cli_channel.app, name="channel")
 app.add_typer(cli_input.app, name="input")
 app.add_typer(cli_media.app, name="media")
 app.add_typer(cli_power.app, name="power")
 app.add_typer(cli_remote.app, name="remote")
+app.add_typer(cli_setup.app)
 app.add_typer(cli_sound_output.app, name="sound-output")
+app.add_typer(cli_version.app)
 app.add_typer(cli_volume.app, name="volume")
-
-# Commands that only has a single sub-command
-# https://github.com/tiangolo/typer/issues/243
-app.command()(cli_adhoc.adhoc)
-app.command()(cli_setup.setup)
-app.command()(cli_version.version)
 
 
 if __name__ == "__main__":
