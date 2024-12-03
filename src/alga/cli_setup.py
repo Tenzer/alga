@@ -6,10 +6,13 @@ from typing import Annotated, Optional
 from getmac import get_mac_address
 from rich import print
 from rich.console import Console
-from typer import Argument, Exit
+from typer import Argument, Exit, Typer
 
 from alga import client, config
 from alga.payloads import get_hello_data
+
+
+app = Typer()
 
 
 def _ip_from_hostname(hostname: str) -> Optional[str]:
@@ -21,6 +24,7 @@ def _ip_from_hostname(hostname: str) -> Optional[str]:
         return None
 
 
+@app.command()
 def setup(
     hostname: Annotated[str, Argument()] = "lgwebostv",
 ) -> None:  # pragma: no cover
