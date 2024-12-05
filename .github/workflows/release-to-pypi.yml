@@ -33,7 +33,7 @@ jobs:
         run: poetry build
 
       - name: Attest
-        uses: actions/attest-build-provenance@v1
+        uses: actions/attest-build-provenance@v2
         with:
           subject-path: dist/*
 
