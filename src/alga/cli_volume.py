@@ -21,8 +21,18 @@ def get() -> None:
     """Get current volume"""
 
     response = client.request("ssap://audio/getVolume")
+
+    if "volume" in response:
+        # webOS 3.0
+        volume = response["volume"]
+        muted = response["muted"]
+    else:
+        # Newer versions
+        volume = response["volumeStatus"]["volume"]
+        muted = response["volumeStatus"]["muteStatus"]
+
     print(
-        f"Volume is currently set to [bold]{response['volume']}[/bold] and is currently {'[red]' if response['muted'] else '[green]not '}muted"
+        f"Volume is currently set to [bold]{volume}[/bold] and is currently {'[red]' if muted else '[green]not '}muted"
     )
 
 

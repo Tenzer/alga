@@ -1,5 +1,6 @@
 from unittest.mock import MagicMock
 
+import pytest
 from faker import Faker
 from typer.testing import CliRunner
 
@@ -35,30 +36,30 @@ def test_set(faker: Faker, mock_request: MagicMock) -> None:
     assert result.stdout == ""
 
 
-def test_get_muted(faker: Faker, mock_request: MagicMock) -> None:
+@pytest.mark.parametrize(
+    ["muted", "version"], [[True, "old"], [False, "old"], [True, "new"], [False, "new"]]
+)
+def test_get(faker: Faker, mock_request: MagicMock, muted: bool, version: str) -> None:
     volume = faker.pyint()
-    mock_request.return_value = {"volume": volume, "muted": True}
+    if version == "old":
+        mock_request.return_value = {"volume": volume, "muted": muted}
+    else:
+        mock_request.return_value = {
+            "volumeStatus": {"volume": volume, "muteStatus": muted}
+        }
 
     result = runner.invoke(app, ["volume", "get"])
 
     mock_request.assert_called_once_with("ssap://audio/getVolume")
     assert result.exit_code == 0
-    assert (
-        result.stdout == f"Volume is currently set to {volume} and is currently muted\n"
-    )
 
+    muted_text = ""
+    if not muted:
+        muted_text = "not "
 
-def test_get_not_muted(faker: Faker, mock_request: MagicMock) -> None:
-    volume = faker.pyint()
-    mock_request.return_value = {"volume": volume, "muted": False}
-
-    result = runner.invoke(app, ["volume", "get"])
-
-    mock_request.assert_called_once_with("ssap://audio/getVolume")
-    assert result.exit_code == 0
     assert (
         result.stdout
-        == f"Volume is currently set to {volume} and is currently not muted\n"
+        == f"Volume is currently set to {volume} and is currently {muted_text}muted\n"
     )
 
 
