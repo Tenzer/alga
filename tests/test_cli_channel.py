@@ -1,9 +1,10 @@
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, call, patch
 
 from faker import Faker
 from typer.testing import CliRunner
 
 from alga.__main__ import app
+from alga.types import Channel
 
 
 runner = CliRunner()
@@ -103,3 +104,40 @@ def test_list(faker: Faker, mock_request: MagicMock) -> None:
         + 1  # table footer
         + 1  # trailing newline
     )
+
+
+def test_pick(faker: Faker, mock_request: MagicMock) -> None:
+    return_value = {
+        "channelList": [
+            {
+                "channelId": faker.pystr(),
+                "channelName": faker.pystr(),
+                "channelNumber": f"{faker.pyint()}",
+            },
+            {
+                "channelId": faker.pystr(),
+                "channelName": faker.pystr(),
+                "channelNumber": f"{faker.pyint()}",
+            },
+            {
+                "channelId": faker.pystr(),
+                "channelName": faker.pystr(),
+                "channelNumber": f"{faker.pyint()}",
+            },
+        ]
+    }
+    mock_request.return_value = return_value
+    first_channel = return_value["channelList"][0]
+
+    with patch("alga.cli_channel.pzp") as mock_pzp:
+        mock_pzp.return_value = Channel(first_channel)
+
+        result = runner.invoke(app, ["channel", "pick"])
+
+    mock_request.assert_has_calls(
+        [
+            call("ssap://tv/getChannelList"),
+            call("ssap://tv/openChannel", {"channelId": first_channel["channelId"]}),
+        ]
+    )
+    assert result.exit_code == 0

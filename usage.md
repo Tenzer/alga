@@ -169,6 +169,7 @@ $ alga channel [OPTIONS] COMMAND [ARGS]...
 * `current`: Get the current channel
 * `down`: Change channel down
 * `list`: List available channels
+* `pick`: Show picker for selecting a channel.
 * `set`: Change to specific channel
 * `up`: Change channel up
 
@@ -208,6 +209,20 @@ List available channels
 
 ```console
 $ alga channel list [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+### `alga channel pick`
+
+Show picker for selecting a channel.
+
+**Usage**:
+
+```console
+$ alga channel pick [OPTIONS]
 ```
 
 **Options**:
@@ -263,6 +278,7 @@ $ alga input [OPTIONS] COMMAND [ARGS]...
 **Commands**:
 
 * `list`: List available inputs
+* `pick`: Show picker for selecting an input.
 * `set`: Switch to given input
 
 ### `alga input list`
@@ -273,6 +289,20 @@ List available inputs
 
 ```console
 $ alga input list [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+### `alga input pick`
+
+Show picker for selecting an input.
+
+**Usage**:
+
+```console
+$ alga input pick [OPTIONS]
 ```
 
 **Options**:
