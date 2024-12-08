@@ -16,7 +16,8 @@ jobs:
       id-token: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout the code
+        uses: actions/checkout@v4
 
       - name: Install Poetry
         run: pipx install poetry

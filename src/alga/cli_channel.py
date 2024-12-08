@@ -1,11 +1,13 @@
 from typing import Annotated
 
+from pzp import pzp  # type: ignore[import-untyped]
 from rich import print
 from rich.console import Console
 from rich.table import Table
 from typer import Argument, Typer
 
 from alga import client
+from alga.types import Channel
 
 
 app = Typer(no_args_is_help=True, help="TV channels")
@@ -57,6 +59,21 @@ def list() -> None:
 
     console = Console()
     console.print(table)
+
+
+@app.command()
+def pick() -> None:
+    """Show picker for selecting a channel."""
+
+    response = client.request("ssap://tv/getChannelList")
+    channels = []
+
+    for channel in response["channelList"]:
+        channels.append(Channel(channel))
+
+    channel = pzp(candidates=channels, fullscreen=False, layout="reverse")
+    if channel:
+        client.request("ssap://tv/openChannel", {"channelId": channel.id_})
 
 
 @app.command()
