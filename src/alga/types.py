@@ -28,3 +28,12 @@ class InputDevice:
 
     def __str__(self) -> str:
         return f"{self.name} ({self.id_})"
+
+
+@dataclass
+class SoundOutputDevice:
+    id_: str
+    name: str
+
+    def __str__(self) -> str:
+        return self.name

@@ -567,6 +567,7 @@ $ alga sound-output [OPTIONS] COMMAND [ARGS]...
 **Commands**:
 
 * `get`: Show the current output device
+* `pick`: Show picker for selecting a sound output...
 * `set`: Change the output device
 
 ### `alga sound-output get`
@@ -577,6 +578,20 @@ Show the current output device
 
 ```console
 $ alga sound-output get [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+### `alga sound-output pick`
+
+Show picker for selecting a sound output device.
+
+**Usage**:
+
+```console
+$ alga sound-output pick [OPTIONS]
 ```
 
 **Options**:
