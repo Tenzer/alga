@@ -1,10 +1,11 @@
 import json
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, call, patch
 
 from faker import Faker
 from typer.testing import CliRunner
 
 from alga.__main__ import app
+from alga.types import App
 
 
 runner = CliRunner()
@@ -95,3 +96,28 @@ def test_info(faker: Faker, mock_request: MagicMock) -> None:
     )
     assert result.exit_code == 0
     assert result.stdout == f"{app_info}\n"
+
+
+def test_pick(faker: Faker, mock_request: MagicMock) -> None:
+    return_value = {
+        "apps": [
+            {"id": faker.pystr(), "title": faker.pystr()},
+            {"id": faker.pystr(), "title": faker.pystr()},
+            {"id": faker.pystr(), "title": faker.pystr()},
+        ]
+    }
+    mock_request.return_value = return_value
+    first_app = return_value["apps"][0]
+
+    with patch("alga.cli_app.pzp") as mock_pzp:
+        mock_pzp.return_value = App(first_app)
+
+        result = runner.invoke(app, ["app", "pick"])
+
+    mock_request.assert_has_calls(
+        [
+            call("ssap://com.webos.applicationManager/listApps"),
+            call("ssap://system.launcher/launch", {"id": first_app["id"]}),
+        ]
+    )
+    assert result.exit_code == 0

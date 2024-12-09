@@ -66,6 +66,7 @@ $ alga app [OPTIONS] COMMAND [ARGS]...
 * `info`: Show info about specific app
 * `launch`: Launch an app
 * `list`: List installed apps
+* `pick`: Show picker for selecting an app.
 
 ### `alga app close`
 
@@ -144,6 +145,20 @@ List installed apps
 
 ```console
 $ alga app list [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+### `alga app pick`
+
+Show picker for selecting an app.
+
+**Usage**:
+
+```console
+$ alga app pick [OPTIONS]
 ```
 
 **Options**:
