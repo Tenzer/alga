@@ -359,13 +359,13 @@ six = ">=1.5"
 
 [[package]]
 name = "pzp"
-version = "0.0.24"
+version = "0.0.25"
 description = "Pure-python fzf-inspired element picker"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "pzp-0.0.24-py2.py3-none-any.whl", hash = "sha256:80edf2442216ac023ed4969827552d7c35a81e60829621bd9d10115254e7fb09"},
-    {file = "pzp-0.0.24.tar.gz", hash = "sha256:d7a48a1fe2200372bb724b21e6162c88c2935a73cd3ae150dd4622c8cf3aaac1"},
+    {file = "pzp-0.0.25-py2.py3-none-any.whl", hash = "sha256:929f19eb34f4aff0f96e266afd57209584ceb2ee5533a609929a5c9f19e4661c"},
+    {file = "pzp-0.0.25.tar.gz", hash = "sha256:dbd3a154433d072f9243a09bf9217f7f7d79ec5043b6d0b10c71d5f24a5cc766"},
 ]
 
 [package.extras]
