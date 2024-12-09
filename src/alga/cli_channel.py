@@ -1,6 +1,6 @@
 from typing import Annotated
 
-from pzp import pzp  # type: ignore[import-untyped]
+from pzp import pzp
 from rich import print
 from rich.console import Console
 from rich.table import Table
