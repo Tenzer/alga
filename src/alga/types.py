@@ -3,6 +3,19 @@ from typing import Any
 
 
 @dataclass
+class App:
+    id_: str
+    name: str
+
+    def __init__(self, app: dict[str, Any]) -> None:
+        self.id_ = app["id"]
+        self.name = app["title"]
+
+    def __str__(self) -> str:
+        return f"{self.name} ({self.id_})"
+
+
+@dataclass
 class Channel:
     id_: str
     number: str
