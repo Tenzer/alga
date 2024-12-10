@@ -8,6 +8,7 @@ $ alga [OPTIONS] COMMAND [ARGS]...
 
 **Options**:
 
+* `--tv TEXT`: Specify which TV the command should be sent to
 * `--install-completion`: Install completion for the current shell.
 * `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
 * `--help`: Show this message and exit.
@@ -21,8 +22,8 @@ $ alga [OPTIONS] COMMAND [ARGS]...
 * `media`: Control the playing media
 * `power`: Turn TV (or screen) on and off
 * `remote`: Remote control button presses
-* `setup`: Pair a new TV
 * `sound-output`: Audio output device
+* `tv`: Set up TVs to manage via Alga
 * `version`: Print Alga version
 * `volume`: Audio volume
 
@@ -547,24 +548,6 @@ $ alga remote send [OPTIONS] BUTTON
 
 * `--help`: Show this message and exit.
 
-## `alga setup`
-
-Pair a new TV
-
-**Usage**:
-
-```console
-$ alga setup [OPTIONS] [HOSTNAME]
-```
-
-**Arguments**:
-
-* `[HOSTNAME]`: [default: lgwebostv]
-
-**Options**:
-
-* `--help`: Show this message and exit.
-
 ## `alga sound-output`
 
 Audio output device
@@ -626,6 +609,116 @@ $ alga sound-output set [OPTIONS] VALUE
 **Arguments**:
 
 * `VALUE`: [required]
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `alga tv`
+
+Set up TVs to manage via Alga
+
+**Usage**:
+
+```console
+$ alga tv [OPTIONS] COMMAND [ARGS]...
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+**Commands**:
+
+* `add`: Pair a new TV
+* `list`: List current TVs
+* `remove`: Remove a TV
+* `rename`: Change the identifier for a TV
+* `set-default`: Set the default TV
+
+### `alga tv add`
+
+Pair a new TV
+
+**Usage**:
+
+```console
+$ alga tv add [OPTIONS] NAME [HOSTNAME]
+```
+
+**Arguments**:
+
+* `NAME`: [required]
+* `[HOSTNAME]`: [default: lgwebostv]
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+### `alga tv list`
+
+List current TVs
+
+**Usage**:
+
+```console
+$ alga tv list [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+### `alga tv remove`
+
+Remove a TV
+
+**Usage**:
+
+```console
+$ alga tv remove [OPTIONS] NAME
+```
+
+**Arguments**:
+
+* `NAME`: [required]
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+### `alga tv rename`
+
+Change the identifier for a TV
+
+**Usage**:
+
+```console
+$ alga tv rename [OPTIONS] OLD_NAME NEW_NAME
+```
+
+**Arguments**:
+
+* `OLD_NAME`: [required]
+* `NEW_NAME`: [required]
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+### `alga tv set-default`
+
+Set the default TV
+
+**Usage**:
+
+```console
+$ alga tv set-default [OPTIONS] NAME
+```
+
+**Arguments**:
+
+* `NAME`: [required]
 
 **Options**:
 
