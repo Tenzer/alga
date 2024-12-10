@@ -1,7 +1,7 @@
 from typer import Typer
 from wakeonlan import send_magic_packet
 
-from alga import client, config
+from alga import client, config, state
 
 
 app = Typer(no_args_is_help=True, help="Turn TV (or screen) on and off")
@@ -19,7 +19,11 @@ def on() -> None:
     """Turn TV on via Wake-on-LAN"""
 
     cfg = config.get()
-    send_magic_packet(cfg["mac"])
+
+    tv_id = state.tv_id or cfg["default_tv"]
+    tv = cfg["tvs"][tv_id]
+
+    send_magic_packet(tv["mac"])
 
 
 @app.command()

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, Optional
 
 
 @dataclass
@@ -50,3 +50,8 @@ class SoundOutputDevice:
 
     def __str__(self) -> str:
         return self.name
+
+
+@dataclass
+class State:
+    tv_id: Optional[str] = None
