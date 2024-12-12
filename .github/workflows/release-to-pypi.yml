@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Install Poetry
         run: pipx install poetry
