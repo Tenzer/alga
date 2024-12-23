@@ -44,7 +44,7 @@ jobs:
         uses: DeterminateSystems/flake-checker-action@v9
 
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v3
+        uses: DeterminateSystems/nix-installer-action@v16
 
       - name: Cache Nix
         uses: DeterminateSystems/magic-nix-cache-action@v8
