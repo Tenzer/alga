@@ -31,6 +31,30 @@ jobs:
       - name: Run mypy
         run: poetry run mypy .
 
+  nix-flake:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check Nix flake inputs
+        uses: DeterminateSystems/flake-checker-action@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v3
+
+      - name: Cache Nix
+        uses: DeterminateSystems/magic-nix-cache-action@v8
+
+      - name: Build package
+        run: nix build
+
+      - name: Run command
+        run: nix run
+
   pre-commit:
     runs-on: ubuntu-24.04
 
@@ -111,6 +135,7 @@ jobs:
 
     needs:
       - mypy
+      - nix-flake
       - pre-commit
       - pytest
       - usage
