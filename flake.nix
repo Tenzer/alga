@@ -32,6 +32,39 @@
                   hash = "sha256-zvR+Z/BRJ4Pug+JMwvOeWyO11MoMMrvXIb1k9IY2Zn4=";
                 };
               };
+              pzp = p.buildPythonPackage rec {
+                version = "0.0.25";
+                pname = "pzp";
+                format = "pyproject";
+                nativeBuildInputs = with p.pythonPackages; [
+                  poetry-core
+                  setuptools
+                ];
+                src = p.fetchPypi {
+                  inherit version pname;
+                  hash = "sha256-29OhVEM9By+SQ6Cb+SF/f3157FBDttCxDHHV8kpcx2Y=";
+                };
+              };
+              typer = p.buildPythonPackage rec {
+                version = "0.15.1";
+                pname = "typer";
+                format = "pyproject";
+                nativeBuildInputs = with p.pythonPackages; [
+                  poetry-core
+                  pdm-backend
+                ];
+                propagatedBuildInputs = with p.pythonPackages; [
+                  click
+                  shellingham
+                  rich
+                  typing-extensions
+                ];
+                src = p.fetchPypi {
+                  inherit version pname;
+                  hash = "sha256-oFiMCn+mihl4oGmBhld3j4ar5v9epqv0cvlAoIv+Two=";
+                };
+              };
+
             };
           };
         };
