@@ -41,7 +41,7 @@ jobs:
           persist-credentials: false
 
       - name: Check Nix flake inputs
-        uses: DeterminateSystems/flake-checker-action@v4
+        uses: DeterminateSystems/flake-checker-action@v9
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v3
