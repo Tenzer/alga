@@ -26,8 +26,6 @@ jobs:
 
       - name: Set up Python
         uses: actions/setup-python@v5
-        with:
-          cache: poetry
 
       - name: Install dependencies
         run: poetry install
