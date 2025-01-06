@@ -1,11 +1,21 @@
-[tool.poetry]
+[project]
 name = "alga"
 version = "2.0.1"
 description = "CLI for remote controlling LG webOS TVs"
-authors = ["Jeppe Fihl-Pearson <jeppe@tenzer.dk>"]
+authors = [{ name = "Jeppe Fihl-Pearson", email = "jeppe@tenzer.dk" }]
 license = "MIT"
-repository = "https://github.com/Tenzer/alga"
 readme = "README.md"
+requires-python = ">= 3.9"
+
+keywords = [
+    "lg",
+    "lgtv",
+    "remote",
+    "remote-control",
+    "webos",
+    "webos-tv",
+]
+
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
@@ -24,6 +34,26 @@ classifiers = [
     "Typing :: Typed",
 ]
 
+dependencies = [
+    "cfgs >= 0.13.0",
+    "getmac >= 0.9.0",
+    "pzp >=0.0.25",
+    "rich >= 13.0.0",
+    "typer >= 0.15.0",
+    "wakeonlan >= 2.0.0",
+    "websocket-client >= 1.0.0",
+]
+
+[project.urls]
+documentation = "https://github.com/Tenzer/alga/blob/main/usage.md"
+homepage = "https://github.com/Tenzer/alga"
+issues = "https://github.com/Tenzer/alga/issues"
+releasenotes = "https://github.com/Tenzer/alga/releases"
+source = "https://github.com/Tenzer/alga.git"
+
+[project.scripts]
+alga = "alga.__main__:app"
+
 [tool.poetry.dependencies]
 python = "^3.9"
 cfgs = ">= 0.13.0"
@@ -41,11 +71,8 @@ mypy = "*"
 pytest = "*"
 pytest-cov = "*"
 
-[tool.poetry.scripts]
-alga = "alga.__main__:app"
-
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core >= 2.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
