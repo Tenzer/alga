@@ -1,7 +1,7 @@
 import json
 from ipaddress import ip_address
 from socket import gaierror, getaddrinfo
-from typing import Annotated, Optional
+from typing import Annotated, Optional, cast
 
 from getmac import get_mac_address
 from rich import print
@@ -17,7 +17,10 @@ def _ip_from_hostname(hostname: str) -> Optional[str]:
     try:
         results = getaddrinfo(host=hostname, port=None)
         # TODO: Do we want to handle receiving multiple IP addresses?
-        return results[0][4][0]
+        first_address = results[0]
+        sockaddr = first_address[4]
+        address = sockaddr[0]
+        return cast(str, address)
     except gaierror:
         return None
 
