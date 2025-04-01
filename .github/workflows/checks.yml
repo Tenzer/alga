@@ -76,13 +76,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        package-resolution:
+          - --frozen
+          - --resolution=lowest
         python-version:
           - "3.9"
           - "3.10"
           - "3.11"
           - "3.12"
           - "3.13"
-          - "3.14-dev"
+          - "3.14"
 
     steps:
       - name: Checkout the code
@@ -93,44 +96,10 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v5
         with:
-          enable-cache: true
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: uv sync --frozen
-
-      - name: Run pytest
-        run: uv run pytest
-
-
-  pytest-lowest:
-    runs-on: ubuntu-24.04
-
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version:
-          - "3.9"
-          - "3.10"
-          - "3.11"
-          - "3.12"
-          - "3.13"
-          - "3.14-dev"
-
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
-        with:
-          enable-cache: true
-          python-version: ${{ matrix.python-version }}
-
-      - name: Install dependencies
-        run: uv sync --resolution=lowest
+        run: uv sync ${{ matrix.package-resolution }}
 
       - name: Run pytest
         run: uv run pytest
@@ -168,7 +137,6 @@ jobs:
       - nix-flake
       - pre-commit
       - pytest
-      - pytest-lowest
       - usage
 
     runs-on: ubuntu-24.04
