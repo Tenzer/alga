@@ -3,42 +3,67 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    poetry2nix = {
-      url = "github:nix-community/poetry2nix";
+
+    pyproject-nix = {
+      url = "github:pyproject-nix/pyproject.nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
+    };
+
+    uv2nix = {
+      url = "github:pyproject-nix/uv2nix";
+      inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    pyproject-build-systems = {
+      url = "github:pyproject-nix/build-system-pkgs";
+      inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.uv2nix.follows = "uv2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs =
     {
       self,
-      nixpkgs,
       flake-utils,
-      poetry2nix,
+      nixpkgs,
+      uv2nix,
+      pyproject-nix,
+      pyproject-build-systems,
+      ...
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        alga =
-          { poetry2nix, lib }:
-          poetry2nix.mkPoetryApplication {
-            projectDir = self;
-            preferWheels = true;
-          };
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [
-            poetry2nix.overlays.default
-            (final: _: {
-              alga = final.callPackage alga { };
-            })
-          ];
+        inherit (nixpkgs) lib;
+
+        workspace = uv2nix.lib.workspace.loadWorkspace { workspaceRoot = ./.; };
+        overlay = workspace.mkPyprojectOverlay { sourcePreference = "wheel"; };
+
+        pkgs = nixpkgs.legacyPackages.${system};
+        python = pkgs.python313;
+
+        pythonSet = (pkgs.callPackage pyproject-nix.build.packages { inherit python; }).overrideScope (
+          lib.composeManyExtensions [
+            pyproject-build-systems.overlays.default
+            overlay
+          ]
+        );
+
+        inherit (pkgs.callPackages pyproject-nix.build.util { }) mkApplication;
+        package = mkApplication {
+          venv = pythonSet.mkVirtualEnv "alga" workspace.deps.default;
+          package = pythonSet.alga;
         };
       in
       {
-        packages.default = pkgs.alga;
+        packages = {
+          alga = package;
+          default = package;
+        };
         legacyPackages = pkgs;
       }
     );
