@@ -1,6 +1,6 @@
 [project]
 name = "alga"
-version = "2.0.1"
+version = "2.1.0"
 description = "CLI for remote controlling LG webOS TVs"
 authors = [{ name = "Jeppe Fihl-Pearson", email = "jeppe@tenzer.dk" }]
 license = "MIT"
