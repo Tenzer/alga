@@ -44,10 +44,10 @@ Development
 -----------
 
 The code base is fully type annotated and test coverage is being enforced.
-Types can be checked via `poetry run mypy .` and tests via `poetry run pytest`.
+Types can be checked via `uv run mypy .` and tests via `uv run pytest`.
 
 Tests are run for each of the supported Python versions in CI.
 
 [pre-commit](https://pre-commit.com/) used to run Ruff for linting and formatting.
 
-`usage.md` is updated via `poetry run ./generate-usage.sh`.
+`usage.md` is updated via `uv run ./generate-usage.sh`.
