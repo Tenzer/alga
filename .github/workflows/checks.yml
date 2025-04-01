@@ -20,19 +20,17 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install Poetry
-        run: pipx install poetry
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
         with:
-          cache: poetry
+          enable-cache: true
 
       - name: Install dependencies
-        run: poetry install
+        run: uv sync --frozen
 
       - name: Run mypy
-        run: poetry run mypy .
+        run: uv run mypy .
+
 
   nix-flake:
     runs-on: ubuntu-24.04
@@ -49,14 +47,12 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v16
 
-      - name: Cache Nix
-        uses: DeterminateSystems/magic-nix-cache-action@v9
-
       - name: Build package
         run: nix build
 
       - name: Run command
         run: nix run
+
 
   pre-commit:
     runs-on: ubuntu-24.04
@@ -72,6 +68,7 @@ jobs:
 
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.1
+
 
   pytest:
     runs-on: ubuntu-24.04
@@ -93,20 +90,51 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install Poetry
-        run: pipx install poetry
-
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
         with:
+          enable-cache: true
           python-version: ${{ matrix.python-version }}
-          cache: poetry
 
       - name: Install dependencies
-        run: poetry install
+        run: uv sync --frozen
 
       - name: Run pytest
-        run: poetry run pytest
+        run: uv run pytest
+
+
+  pytest-lowest:
+    runs-on: ubuntu-24.04
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.9"
+          - "3.10"
+          - "3.11"
+          - "3.12"
+          - "3.13"
+          - "3.14-dev"
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: uv sync --resolution=lowest
+
+      - name: Run pytest
+        run: uv run pytest
+
 
   usage:
     runs-on: ubuntu-24.04
@@ -117,21 +145,20 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install Poetry
-        run: pipx install poetry
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
         with:
-          cache: poetry
+          enable-cache: true
 
       - name: Install dependencies
-        run: poetry install
+        run: uv sync --frozen
+
+      - name: Generate usage.md
+        run: uv run ./generate-usage.sh
 
       - name: Check usage.md is up-to-date
-        run: |
-          poetry run ./generate-usage.sh
-          git diff --exit-code
+        run: git diff --exit-code
+
 
   all-checks-passed:
     if: always()
@@ -141,6 +168,7 @@ jobs:
       - nix-flake
       - pre-commit
       - pytest
+      - pytest-lowest
       - usage
 
     runs-on: ubuntu-24.04
