@@ -36,11 +36,10 @@ classifiers = [
 
 dependencies = [
     "cfgs >= 0.13.0",
-    "click < 8.2.0",
     "getmac >= 0.9.0",
     "pzp >=0.0.25",
     "rich >= 13.0.0",
-    "typer >= 0.15.0",
+    "typer >= 0.15.4",
     "wakeonlan >= 2.0.0",
     "websocket-client >= 1.0.0",
 ]
