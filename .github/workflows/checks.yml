@@ -80,7 +80,7 @@ jobs:
       matrix:
         package-resolution:
           - --frozen
-          - --resolution=lowest
+          - --resolution=lowest-direct
         python-version:
           - "3.9"
           - "3.10"
