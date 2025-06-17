@@ -1,9 +1,7 @@
-from typing import Optional
-
 def get_mac_address(
-    interface: Optional[str] = None,
-    ip: Optional[str] = None,
-    ip6: Optional[str] = None,
-    hostname: Optional[str] = None,
+    interface: str | None = None,
+    ip: str | None = None,
+    ip6: str | None = None,
+    hostname: str | None = None,
     network_request: bool = True,
-) -> Optional[str]: ...
+) -> str | None: ...
