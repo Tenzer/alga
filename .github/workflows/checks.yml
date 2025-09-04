@@ -51,7 +51,7 @@ jobs:
         run: nix build
 
       - name: Run command
-        run: nix run
+        run: nix run . -- --help
 
 
   pre-commit:
