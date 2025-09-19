@@ -48,7 +48,7 @@ dependencies = [
 dev = [
     "coverage ==7.10.6",
     "faker ==37.8.0",
-    "mypy ==1.18.1",
+    "mypy ==1.18.2",
     "pytest ==8.4.2",
     "pytest-cov ==7.0.0",
 ]
