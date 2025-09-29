@@ -9,6 +9,6 @@ repos:
       - id: ruff-format
 
   - repo: https://github.com/woodruffw/zizmor-pre-commit
-    rev: v1.14.1
+    rev: v1.14.2
     hooks:
       - id: zizmor
