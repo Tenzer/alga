@@ -2,7 +2,7 @@ import json
 import ssl
 from collections.abc import Iterator
 from contextlib import contextmanager
-from typing import Any, Optional, cast
+from typing import Any, cast
 
 from rich import print
 from typer import Exit
@@ -32,7 +32,7 @@ def do_handshake(connection: WebSocket, key: str) -> None:
         )
 
 
-def request(uri: str, data: Optional[dict[str, Any]] = None) -> dict[str, Any]:
+def request(uri: str, data: dict[str, Any] | None = None) -> dict[str, Any]:
     cfg = config.get()
     tv_id = state.tv_id or cfg.get("default_tv")
 

@@ -1,7 +1,7 @@
 import json
 from ipaddress import ip_address
 from socket import gaierror, getaddrinfo
-from typing import Annotated, Optional, cast
+from typing import Annotated, cast
 
 from getmac import get_mac_address
 from rich import print
@@ -13,7 +13,7 @@ from alga import client, config
 from alga.payloads import get_hello_data
 
 
-def _ip_from_hostname(hostname: str) -> Optional[str]:
+def _ip_from_hostname(hostname: str) -> str | None:
     try:
         results = getaddrinfo(host=hostname, port=None)
         # TODO: Do we want to handle receiving multiple IP addresses?
@@ -35,7 +35,7 @@ def add(
     """Pair a new TV"""
 
     # Check if we have been passed an IP address
-    ip: Optional[str]
+    ip: str | None
     try:
         ip = ip_address(hostname).compressed
     except ValueError:
