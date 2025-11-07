@@ -1,4 +1,4 @@
-from typing import Annotated, Optional
+from typing import Annotated
 
 from typer import Option, Typer
 
@@ -20,7 +20,7 @@ from alga import (
 
 def global_options(
     tv: Annotated[
-        Optional[str], Option(help="Specify which TV the command should be sent to")
+        str | None, Option(help="Specify which TV the command should be sent to")
     ] = None,
 ) -> None:
     state.tv_id = tv

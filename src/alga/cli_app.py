@@ -1,5 +1,5 @@
 import json
-from typing import Annotated, Optional
+from typing import Annotated
 
 from pzp import pzp
 from rich import print
@@ -44,8 +44,7 @@ def info(app_id: str) -> None:
 
 @app.command()
 def launch(
-    app_id: Annotated[str, Argument()],
-    data: Annotated[Optional[str], Argument()] = None,
+    app_id: Annotated[str, Argument()], data: Annotated[str | None, Argument()] = None
 ) -> None:
     """Launch an app"""
 

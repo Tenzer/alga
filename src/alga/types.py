@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Any, Optional
+from typing import Any
 
 
 @dataclass
@@ -54,4 +54,4 @@ class SoundOutputDevice:
 
 @dataclass
 class State:
-    tv_id: Optional[str] = None
+    tv_id: str | None = None

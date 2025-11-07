@@ -1,5 +1,5 @@
 import json
-from typing import Annotated, Optional
+from typing import Annotated
 
 from rich import print
 from typer import Argument, Typer
@@ -11,7 +11,7 @@ app = Typer()
 
 
 @app.command()
-def adhoc(path: str, data: Annotated[Optional[str], Argument()] = None) -> None:
+def adhoc(path: str, data: Annotated[str | None, Argument()] = None) -> None:
     """Send raw request to the TV"""
 
     if data:

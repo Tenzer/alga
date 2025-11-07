@@ -5,7 +5,7 @@ description = "CLI for remote controlling LG webOS TVs"
 authors = [{ name = "Jeppe Fihl-Pearson", email = "jeppe@tenzer.dk" }]
 license = "MIT"
 readme = "README.md"
-requires-python = ">= 3.9"
+requires-python = ">= 3.10"
 
 keywords = [
     "lg",
@@ -23,12 +23,12 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
     "Topic :: Home Automation",
     "Topic :: Multimedia",
     "Typing :: Typed",
@@ -69,7 +69,7 @@ build-backend = "hatchling.build"
 
 
 [tool.ruff]
-target-version = "py39"
+target-version = "py310"
 
 [tool.ruff.lint]
 select = [
@@ -110,5 +110,5 @@ exclude_also = [
 
 
 [tool.mypy]
-python_version = "3.9"
+python_version = "3.10"
 strict = true
