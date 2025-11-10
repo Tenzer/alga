@@ -94,13 +94,13 @@ split-on-trailing-comma = false
 skip-magic-trailing-comma = true
 
 
-[tool.pytest.ini_options]
-addopts = """
-    --cov
-    --cov-fail-under=100
-    --cov-report=term-missing:skip-covered
-    --no-cov-on-fail
-"""
+[tool.pytest]
+addopts = [
+    "--cov",
+    "--cov-fail-under=100",
+    "--cov-report=term-missing:skip-covered",
+    "--no-cov-on-fail",
+]
 
 
 [tool.coverage.report]
