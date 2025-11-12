@@ -1,3 +1,4 @@
+from rich import print
 from typer import Typer
 from wakeonlan import send_magic_packet
 
