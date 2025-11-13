@@ -1,3 +1,4 @@
+from rich import print
 from typer import Typer
 from wakeonlan import send_magic_packet
 
@@ -38,3 +39,11 @@ def screen_on() -> None:
     """Turn TV screen on"""
 
     client.request("ssap://com.webos.service.tvpower/power/turnOnScreen")
+
+
+@app.command()
+def screen_state() -> None:
+    """Show if TV screen is active or off"""
+
+    response = client.request("ssap://com.webos.service.tvpower/power/getPowerState")
+    print(f"The TV screen is currently: [bold]{response['state']}[/bold]")

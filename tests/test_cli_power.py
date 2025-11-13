@@ -50,3 +50,16 @@ def test_on(mock_config: MagicMock, faker: Faker) -> None:
     mock_send_magic_packet.assert_called_once_with(mac_address)
     assert result.exit_code == 0
     assert result.stdout == ""
+
+
+def test_screen_status(mock_request: MagicMock, faker: Faker) -> None:
+    state = faker.pystr()
+    mock_request.return_value = {"state": state}
+
+    result = runner.invoke(app, ["power", "screen-state"])
+
+    mock_request.assert_called_once_with(
+        "ssap://com.webos.service.tvpower/power/getPowerState"
+    )
+    assert result.exit_code == 0
+    assert result.stdout == f"The TV screen is currently: {state}\n"

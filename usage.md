@@ -455,6 +455,7 @@ $ alga power [OPTIONS] COMMAND [ARGS]...
 * `on`: Turn TV on via Wake-on-LAN
 * `screen-off`: Turn TV screen off
 * `screen-on`: Turn TV screen on
+* `screen-state`: Show if TV screen is active or off
 
 ### `alga power off`
 
@@ -506,6 +507,20 @@ Turn TV screen on
 
 ```console
 $ alga power screen-on [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+### `alga power screen-state`
+
+Show if TV screen is active or off
+
+**Usage**:
+
+```console
+$ alga power screen-state [OPTIONS]
 ```
 
 **Options**:
