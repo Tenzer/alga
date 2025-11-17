@@ -48,6 +48,6 @@ Types can be checked via `uv run mypy .` and tests via `uv run pytest`.
 
 Tests are run for each of the supported Python versions in CI.
 
-[pre-commit](https://pre-commit.com/) used to run Ruff for linting and formatting.
+[pre-commit](https://pre-commit.com/)/[prek](https://prek.j178.dev/) is used to run Ruff for linting and formatting.
 
 `usage.md` is updated via `uv run ./generate-usage.sh`.
