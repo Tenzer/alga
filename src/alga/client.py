@@ -13,9 +13,13 @@ from alga.payloads import get_hello_data
 
 
 @contextmanager
-def connect(hostname: str, timeout: int = 10) -> Iterator[WebSocket]:
+def connect(hostname: str, timeout: int | None = None) -> Iterator[WebSocket]:
     connection = WebSocket(sslopt={"cert_reqs": ssl.CERT_NONE})
-    connection.connect(f"wss://{hostname}:3001/", suppress_origin=True, timeout=timeout)  # type: ignore[no-untyped-call]
+    connection.connect(
+        f"wss://{hostname}:3001/",
+        suppress_origin=True,
+        timeout=state.timeout or timeout or 10,
+    )  # type: ignore[no-untyped-call]
 
     try:
         yield connection

@@ -22,8 +22,13 @@ def global_options(
     tv: Annotated[
         str | None, Option(help="Specify which TV the command should be sent to")
     ] = None,
+    timeout: Annotated[
+        int | None,
+        Option(help="Number of seconds to wait before a response (default 10)"),
+    ] = None,
 ) -> None:
     state.tv_id = tv
+    state.timeout = timeout
 
 
 app = Typer(no_args_is_help=True, callback=global_options)
