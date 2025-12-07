@@ -49,7 +49,7 @@ dev = [
     "coverage ==7.12.0",
     "faker ==38.2.0",
     "mypy ==1.19.0",
-    "pytest ==9.0.1",
+    "pytest ==9.0.2",
     "pytest-cov ==7.0.0",
 ]
 
