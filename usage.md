@@ -9,6 +9,7 @@ $ alga [OPTIONS] COMMAND [ARGS]...
 **Options**:
 
 * `--tv TEXT`: Specify which TV the command should be sent to
+* `--timeout INTEGER`: Number of seconds to wait before a response (default 10)
 * `--install-completion`: Install completion for the current shell.
 * `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
 * `--help`: Show this message and exit.

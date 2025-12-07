@@ -55,3 +55,4 @@ class SoundOutputDevice:
 @dataclass
 class State:
     tv_id: str | None = None
+    timeout: int | None = None
