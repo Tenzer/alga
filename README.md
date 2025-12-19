@@ -44,7 +44,7 @@ Development
 -----------
 
 The code base is fully type annotated and test coverage is being enforced.
-Types can be checked via `uv run mypy .` and tests via `uv run pytest`.
+Types can be checked via `uv run ty check .` and tests via `uv run pytest`.
 
 Tests are run for each of the supported Python versions in CI.
 
