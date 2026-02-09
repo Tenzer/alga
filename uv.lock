@@ -47,11 +47,11 @@ dev = [
 
 [[package]]
 name = "cfgs"
-version = "0.13.0"
+version = "0.14.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/0f/95/b7d0e411b1b64cfe18016616b5e9baf733071182c6d8ff6a7d4ed1138751/cfgs-0.13.0.tar.gz", hash = "sha256:cef47e67f0512783ee83e24cc2f39e5b23b5d4ca0c32bbd721bd64f48636667e", size = 7482, upload-time = "2023-10-05T14:15:56.443Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/7d/1c/2b2a2168a6068badea0e6a6d05b4c13095b52a7d8b2c77cb293f17400ef0/cfgs-0.14.0.tar.gz", hash = "sha256:b4d83d043c724da3dc79eeed1dbca3a415e9c46f5c3d5eb69be420132fb9491b", size = 37234, upload-time = "2026-02-03T16:00:15.655Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0f/bb/870a4df371ec417f05cb13304b14687eba0730de11921f8bf4b30a9f0a46/cfgs-0.13.0-py3-none-any.whl", hash = "sha256:a3e80a31e32c2fae987cb3c38481bbbf4b276bc517e8862f87e9ff174620fa09", size = 7767, upload-time = "2023-10-05T14:14:42.31Z" },
+    { url = "https://files.pythonhosted.org/packages/bc/1b/616cc63d62a33667a839485983a84f0b79762d7459f74b7d6cfb505ff612/cfgs-0.14.0-py3-none-any.whl", hash = "sha256:1844a9ed14caee768c497c3daecf6cd420d1ab0bcbcadb80e3f61eb27cabfd00", size = 7836, upload-time = "2026-02-03T16:00:14.087Z" },
 ]
 
 [[package]]
