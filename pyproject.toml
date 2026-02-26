@@ -50,7 +50,7 @@ dev = [
     "faker ==40.5.1",
     "pytest == 9.0.2",
     "pytest-cov == 7.0.0",
-    "ty ==0.0.18",
+    "ty ==0.0.19",
 ]
 
 [project.urls]
