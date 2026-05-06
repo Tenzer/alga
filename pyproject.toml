@@ -54,11 +54,11 @@ dev = [
 ]
 
 [project.urls]
-documentation = "https://github.com/Tenzer/alga/blob/main/usage.md"
-homepage = "https://github.com/Tenzer/alga"
-issues = "https://github.com/Tenzer/alga/issues"
-releasenotes = "https://github.com/Tenzer/alga/releases"
-source = "https://github.com/Tenzer/alga.git"
+Homepage = "https://github.com/Tenzer/alga"
+Documentation = "https://github.com/Tenzer/alga/blob/main/usage.md"
+Repository = "https://github.com/Tenzer/alga.git"
+Issues = "https://github.com/Tenzer/alga/issues"
+Changelog = "https://github.com/Tenzer/alga/releases"
 
 [project.scripts]
 alga = "alga.__main__:app"
