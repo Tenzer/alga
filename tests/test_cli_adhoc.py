@@ -17,9 +17,9 @@ def test_without_data(faker: Faker, mock_request: MagicMock) -> None:
 
     result = runner.invoke(app, ["adhoc", path])
 
-    mock_request.assert_called_once_with(path)
+    mock_request.assert_called_once_with(path, None)
     assert result.exit_code == 0
-    assert result.stdout == f"{return_value}\n"
+    assert result.stdout == f'"{return_value}"\n'
 
 
 def test_with_data(faker: Faker, mock_request: MagicMock) -> None:
@@ -32,4 +32,4 @@ def test_with_data(faker: Faker, mock_request: MagicMock) -> None:
 
     mock_request.assert_called_once_with(path, data)
     assert result.exit_code == 0
-    assert result.stdout == f"{return_value}\n"
+    assert result.stdout == f'"{return_value}"\n'
