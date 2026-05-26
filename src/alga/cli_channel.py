@@ -41,21 +41,17 @@ def list() -> None:
     table.add_column("Number")
     table.add_column("Name")
 
-    all_channels = []
+    all_channels = {}
     type_to_emoji = {1: "📺", 2: "📻"}
     for channel in response["channelList"]:
-        # The first item is for sorting
-        all_channels.append(
-            [
-                int(channel["channelNumber"]),
-                type_to_emoji.get(channel["channelTypeId"], "❓"),
-                channel["channelNumber"],
-                channel["channelName"],
-            ]
-        )
+        all_channels[int(channel["channelNumber"])] = [
+            type_to_emoji.get(channel["channelTypeId"], "❓"),
+            channel["channelNumber"],
+            channel["channelName"],
+        ]
 
-    for row in sorted(all_channels):
-        table.add_row(*row[1:])
+    for channel_number, channel_details in sorted(all_channels.items()):
+        table.add_row(*channel_details)
 
     console = Console()
     console.print(table)
