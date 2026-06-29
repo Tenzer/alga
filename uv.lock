@@ -409,7 +409,7 @@ wheels = [
 
 [[package]]
 name = "typer"
-version = "0.26.7"
+version = "0.26.8"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "annotated-doc" },
@@ -417,9 +417,9 @@ dependencies = [
     { name = "rich" },
     { name = "shellingham" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/5e/ed/ef06584ccdd5c410df0837951ecd7e15d9a6144ea1bd4c73cecab1a89891/typer-0.26.7.tar.gz", hash = "sha256:e314a34c617e419c091b2830dda3ea1f257134ff593061a8f5b9717ab8dddb3a", size = 201709, upload-time = "2026-06-03T07:18:06.843Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/7c/f7/68adc395201b20b872d68e975386832e8005ffeacedd43a1d837a32815be/typer-0.26.8.tar.gz", hash = "sha256:c244a6bd558886fe3f8780efb6bdd28bb9aff005a94eedebaa5cb32926fe2f7e", size = 202097, upload-time = "2026-06-26T09:22:45.705Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/24/25/2201973529af2c954de0bb725323c3aaed6d7f0ceee8f550dec9185df013/typer-0.26.7-py3-none-any.whl", hash = "sha256:5c87cfbc5d34491c5346ebf49c23e18d56ccb863268d3a8d592b26087c2f5e58", size = 122456, upload-time = "2026-06-03T07:18:05.732Z" },
+    { url = "https://files.pythonhosted.org/packages/80/87/b9fd69c92c6102a066e1b86a35243f53e70bd4c709f2a26d9f4fee4f4dc0/typer-0.26.8-py3-none-any.whl", hash = "sha256:3512ca79ac5c11113414b36e80281b872884477722440691c89d1112e321a49c", size = 122564, upload-time = "2026-06-26T09:22:44.72Z" },
 ]
 
 [[package]]
@@ -442,11 +442,14 @@ wheels = [
 
 [[package]]
 name = "wakeonlan"
-version = "3.3.0"
+version = "4.0.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/0b/69/073906a5a1eedf2e6a36d284456e9fba43e9063f910d202778dab6f96799/wakeonlan-3.3.0.tar.gz", hash = "sha256:80ec2163ecb3a091c6fa655e5e3106968ceaa4541ed90afa6391d1011fef71f2", size = 4514, upload-time = "2026-05-25T10:57:57.483Z" }
+dependencies = [
+    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/8f/16/69e4cdcce1be240667dfa2607f12e00d1c79e4606656327c4f1fb88fea40/wakeonlan-4.0.0.tar.gz", hash = "sha256:1cb30c4ae60f85ef289f4f7d4f703382ed19ba84103206dc5e2b1e51bec9f456", size = 5079, upload-time = "2026-06-28T09:23:15.711Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a6/ab/d1a60da2f2c46a022ef15caaabe5bc468519c05dc855a0a40a83cb656c26/wakeonlan-3.3.0-py3-none-any.whl", hash = "sha256:969d4e1f30add1a79790c99350e91c46ed45588770416257a3f806ca0314b17a", size = 5334, upload-time = "2026-05-25T10:57:55.848Z" },
+    { url = "https://files.pythonhosted.org/packages/5c/80/ecebf7b1b32ebe4a10d72a09e21c4c76a2460fac159752ec9ab88508b7d0/wakeonlan-4.0.0-py3-none-any.whl", hash = "sha256:82c50fe0c8dbc4848b8398f48fd2d2ed5d4af363f3006279372d76513ef84505", size = 5882, upload-time = "2026-06-28T09:23:14.577Z" },
 ]
 
 [[package]]
