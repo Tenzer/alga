@@ -1,7 +1,7 @@
 import json
 from typing import Annotated
 
-from rich import print
+from rich import print_json
 from typer import Argument, Typer
 
 from alga import client
@@ -14,7 +14,5 @@ app = Typer()
 def adhoc(path: str, data: Annotated[str | None, Argument()] = None) -> None:
     """Send raw request to the TV"""
 
-    if data:
-        print(client.request(path, json.loads(data)))
-    else:
-        print(client.request(path))
+    data_str = json.loads(data) if data else None
+    print_json(data=client.request(path, data_str))
