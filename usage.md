@@ -8,8 +8,8 @@ $ alga [OPTIONS] COMMAND [ARGS]...
 
 **Options**:
 
-* `--tv TEXT`: Specify which TV the command should be sent to
-* `--timeout INTEGER`: Number of seconds to wait before a response (default 10)
+* `--tv <str>`: Specify which TV the command should be sent to
+* `--timeout <int>`: Number of seconds to wait before a response (default 10)
 * `--install-completion`: Install completion for the current shell.
 * `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
 * `--help`: Show this message and exit.
@@ -35,13 +35,13 @@ Send raw request to the TV
 **Usage**:
 
 ```console
-$ alga adhoc [OPTIONS] PATH [DATA]
+$ alga adhoc [OPTIONS] {path} [data]
 ```
 
 **Arguments**:
 
-* `PATH`: [required]
-* `[DATA]`
+* `path`: [required]
+* `data`
 
 **Options**:
 
@@ -77,12 +77,12 @@ Close the provided app
 **Usage**:
 
 ```console
-$ alga app close [OPTIONS] APP_ID
+$ alga app close [OPTIONS] {app_id}
 ```
 
 **Arguments**:
 
-* `APP_ID`: [required]
+* `app_id`: [required]
 
 **Options**:
 
@@ -109,12 +109,12 @@ Show info about specific app
 **Usage**:
 
 ```console
-$ alga app info [OPTIONS] APP_ID
+$ alga app info [OPTIONS] {app_id}
 ```
 
 **Arguments**:
 
-* `APP_ID`: [required]
+* `app_id`: [required]
 
 **Options**:
 
@@ -127,13 +127,13 @@ Launch an app
 **Usage**:
 
 ```console
-$ alga app launch [OPTIONS] APP_ID [DATA]
+$ alga app launch [OPTIONS] {app_id} [data]
 ```
 
 **Arguments**:
 
-* `APP_ID`: [required]
-* `[DATA]`
+* `app_id`: [required]
+* `data`
 
 **Options**:
 
@@ -253,12 +253,12 @@ Change to specific channel
 **Usage**:
 
 ```console
-$ alga channel set [OPTIONS] VALUE
+$ alga channel set [OPTIONS] {value}
 ```
 
 **Arguments**:
 
-* `VALUE`: [required]
+* `value`: [required]
 
 **Options**:
 
@@ -333,12 +333,12 @@ Switch to given input
 **Usage**:
 
 ```console
-$ alga input set [OPTIONS] VALUE
+$ alga input set [OPTIONS] {value}
 ```
 
 **Arguments**:
 
-* `VALUE`: [required]
+* `value`: [required]
 
 **Options**:
 
@@ -553,12 +553,12 @@ Send a button press to the TV
 **Usage**:
 
 ```console
-$ alga remote send [OPTIONS] BUTTON
+$ alga remote send [OPTIONS] {button}
 ```
 
 **Arguments**:
 
-* `BUTTON`: [required]
+* `button`: [required]
 
 **Options**:
 
@@ -619,12 +619,12 @@ Change the output device
 **Usage**:
 
 ```console
-$ alga sound-output set [OPTIONS] VALUE
+$ alga sound-output set [OPTIONS] {value}
 ```
 
 **Arguments**:
 
-* `VALUE`: [required]
+* `value`: [required]
 
 **Options**:
 
@@ -659,13 +659,13 @@ Pair a new TV
 **Usage**:
 
 ```console
-$ alga tv add [OPTIONS] NAME [HOSTNAME]
+$ alga tv add [OPTIONS] {name} [hostname]
 ```
 
 **Arguments**:
 
-* `NAME`: [required]
-* `[HOSTNAME]`: [default: lgwebostv]
+* `name`: [required]
+* `hostname`: [default: lgwebostv]
 
 **Options**:
 
@@ -692,12 +692,12 @@ Remove a TV
 **Usage**:
 
 ```console
-$ alga tv remove [OPTIONS] NAME
+$ alga tv remove [OPTIONS] {name}
 ```
 
 **Arguments**:
 
-* `NAME`: [required]
+* `name`: [required]
 
 **Options**:
 
@@ -710,13 +710,13 @@ Change the identifier for a TV
 **Usage**:
 
 ```console
-$ alga tv rename [OPTIONS] OLD_NAME NEW_NAME
+$ alga tv rename [OPTIONS] {old_name} {new_name}
 ```
 
 **Arguments**:
 
-* `OLD_NAME`: [required]
-* `NEW_NAME`: [required]
+* `old_name`: [required]
+* `new_name`: [required]
 
 **Options**:
 
@@ -729,12 +729,12 @@ Set the default TV
 **Usage**:
 
 ```console
-$ alga tv set-default [OPTIONS] NAME
+$ alga tv set-default [OPTIONS] {name}
 ```
 
 **Arguments**:
 
-* `NAME`: [required]
+* `name`: [required]
 
 **Options**:
 
@@ -826,12 +826,12 @@ Set volume to specific amount
 **Usage**:
 
 ```console
-$ alga volume set [OPTIONS] VALUE
+$ alga volume set [OPTIONS] {value}
 ```
 
 **Arguments**:
 
-* `VALUE`: [required]
+* `value`: [required]
 
 **Options**:
 
