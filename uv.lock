@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.10"
 
 [[package]]
@@ -231,11 +231,11 @@ wheels = [
 
 [[package]]
 name = "getmac"
-version = "0.9.5"
+version = "0.9.6"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/89/a8/4af8e06912cd83b1cc6493e9b5d0589276c858f7bdccaf1855df748983de/getmac-0.9.5.tar.gz", hash = "sha256:456435cdbf1f5f45c433a250b8b795146e893b6fc659060f15451e812a2ab17d", size = 94031, upload-time = "2024-07-16T01:47:05.642Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/c8/56/5b79eb5bf3781119dd9b34861cb31596c932a4a7fa94aa3e52563bcabb7d/getmac-0.9.6.tar.gz", hash = "sha256:1539673e819e5856ea9707434f939355c9a9a043d3566224addf52976d804103", size = 94645, upload-time = "2026-10-03T17:33:11.681Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/18/85/4cdbc925381422397bd2b3280680e130091173f2c8dfafb9216eaaa91b00/getmac-0.9.5-py2.py3-none-any.whl", hash = "sha256:22b8a3e15bc0c6bfa94651a3f7f6cd91b59432e1d8199411d4fe12804423e0aa", size = 35781, upload-time = "2024-07-16T01:47:03.75Z" },
+    { url = "https://files.pythonhosted.org/packages/92/d8/251e8adefab20c3ea31a1c999fc8ac12401c949083d1b56647cf8e292780/getmac-0.9.6-py2.py3-none-any.whl", hash = "sha256:9cf6acb26cb0110d799b8abd190dc7c44a75f2094a178bad5a7433efc925d370", size = 36361, upload-time = "2026-10-03T17:33:10.683Z" },
 ]
 
 [[package]]
@@ -463,11 +463,11 @@ wheels = [
 
 [[package]]
 name = "tzdata"
-version = "2026.4"
+version = "2026.5"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/e4/31/3d74fa778a63b98b7374323befcc0be5ab3bd94afd4096a0124e7379152c/tzdata-2026.4.tar.gz", hash = "sha256:f1b8bd365d8d210c55353f4d7f8d6d8561c0ba50d704b700d195a9424bba0d79", size = 199350, upload-time = "2026-09-12T12:56:03.251Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d9/68/f1b440335057bfce71b6e50a9d09445aa2ecbd08359a337976627b8409e7/tzdata-2026.5.tar.gz", hash = "sha256:8cc73c0a0bfca7dbfa59235d60b2eff82231dee33f53d206db1acd9173cfc0a7", size = 200404, upload-time = "2026-10-03T09:23:14.143Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f9/bc/8737e8d54cf51106118039b83f485a4783112fab49ea9d044b234978a46e/tzdata-2026.4-py2.py3-none-any.whl", hash = "sha256:c2169a8b0a7a5e9674da5a135ccdfb2b3e671b333ed9fed17b41f73c34476e81", size = 347494, upload-time = "2026-09-12T12:56:01.67Z" },
+    { url = "https://files.pythonhosted.org/packages/94/21/1e5995a1c920cce14e4bffae20c665ec10e7ed03ab25e006cd741092b718/tzdata-2026.5-py2.py3-none-any.whl", hash = "sha256:b683bd1b6659ddcd810ff02ad09ba821d4bf1065072805063eb35c49617905ac", size = 347996, upload-time = "2026-10-03T09:23:12.535Z" },
 ]
 
 [[package]]
