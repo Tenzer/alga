@@ -1,5 +1,5 @@
 import ssl
-from collections.abc import Iterator
+from collections.abc import Generator
 from contextlib import contextmanager
 from typing import Annotated
 
@@ -13,7 +13,7 @@ app = Typer(no_args_is_help=True, help="Remote control button presses")
 
 
 @contextmanager
-def _input_connection() -> Iterator[WebSocket]:  # pragma: no cover
+def _input_connection() -> Generator[WebSocket]:  # pragma: no cover
     response = client.request(
         "ssap://com.webos.service.networkinput/getPointerInputSocket"
     )
