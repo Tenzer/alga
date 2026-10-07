@@ -1,6 +1,6 @@
 import json
 import ssl
-from collections.abc import Iterator
+from collections.abc import Generator
 from contextlib import contextmanager
 from typing import Any, cast
 
@@ -13,7 +13,7 @@ from alga.payloads import get_hello_data
 
 
 @contextmanager
-def connect(hostname: str, timeout: int | None = None) -> Iterator[WebSocket]:
+def connect(hostname: str, timeout: int | None = None) -> Generator[WebSocket]:
     connection = WebSocket(sslopt={"cert_reqs": ssl.CERT_NONE})
     connection.connect(
         f"wss://{hostname}:3001/",
