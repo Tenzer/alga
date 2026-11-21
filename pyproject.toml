@@ -47,7 +47,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "coverage ==7.17.4",
-    "faker ==40.54.0",
+    "faker ==40.63.0",
     "pytest ==9.2.0",
     "pytest-cov ==7.1.0",
     "ty ==0.0.107",
