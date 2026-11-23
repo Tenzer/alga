@@ -40,8 +40,8 @@ $ alga adhoc [OPTIONS] {path} [data]
 
 **Arguments**:
 
-* `path`: [required]
-* `data`
+* `path <str>`: [required]
+* `data <str>`
 
 **Options**:
 
@@ -82,7 +82,7 @@ $ alga app close [OPTIONS] {app_id}
 
 **Arguments**:
 
-* `app_id`: [required]
+* `app_id <str>`: [required]
 
 **Options**:
 
@@ -114,7 +114,7 @@ $ alga app info [OPTIONS] {app_id}
 
 **Arguments**:
 
-* `app_id`: [required]
+* `app_id <str>`: [required]
 
 **Options**:
 
@@ -132,8 +132,8 @@ $ alga app launch [OPTIONS] {app_id} [data]
 
 **Arguments**:
 
-* `app_id`: [required]
-* `data`
+* `app_id <str>`: [required]
+* `data <str>`
 
 **Options**:
 
@@ -258,7 +258,7 @@ $ alga channel set [OPTIONS] {value}
 
 **Arguments**:
 
-* `value`: [required]
+* `value <str>`: [required]
 
 **Options**:
 
@@ -338,7 +338,7 @@ $ alga input set [OPTIONS] {value}
 
 **Arguments**:
 
-* `value`: [required]
+* `value <str>`: [required]
 
 **Options**:
 
@@ -558,7 +558,7 @@ $ alga remote send [OPTIONS] {button}
 
 **Arguments**:
 
-* `button`: [required]
+* `button <str>`: [required]
 
 **Options**:
 
@@ -624,7 +624,7 @@ $ alga sound-output set [OPTIONS] {value}
 
 **Arguments**:
 
-* `value`: [required]
+* `value <str>`: [required]
 
 **Options**:
 
@@ -664,8 +664,8 @@ $ alga tv add [OPTIONS] {name} [hostname]
 
 **Arguments**:
 
-* `name`: [required]
-* `hostname`: [default: lgwebostv]
+* `name <str>`: [required]
+* `hostname <str>`: [default: lgwebostv]
 
 **Options**:
 
@@ -697,7 +697,7 @@ $ alga tv remove [OPTIONS] {name}
 
 **Arguments**:
 
-* `name`: [required]
+* `name <str>`: [required]
 
 **Options**:
 
@@ -715,8 +715,8 @@ $ alga tv rename [OPTIONS] {old_name} {new_name}
 
 **Arguments**:
 
-* `old_name`: [required]
-* `new_name`: [required]
+* `old_name <str>`: [required]
+* `new_name <str>`: [required]
 
 **Options**:
 
@@ -734,7 +734,7 @@ $ alga tv set-default [OPTIONS] {name}
 
 **Arguments**:
 
-* `name`: [required]
+* `name <str>`: [required]
 
 **Options**:
 
@@ -831,7 +831,7 @@ $ alga volume set [OPTIONS] {value}
 
 **Arguments**:
 
-* `value`: [required]
+* `value <int>`: [required]
 
 **Options**:
 
